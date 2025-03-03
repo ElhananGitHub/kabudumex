@@ -2,6 +2,8 @@ const configUser = sessionStorage.userConfiguraciones
   ? JSON.parse(sessionStorage.userConfiguraciones)
   : {};
 
+  console.log(configUser);
+
 //Listado de las propiedades del nav
 const propertiesNav = [
   { moduleName: "Mercancia", class: "fas fa-pallet", menu: "", submenu: "" },
