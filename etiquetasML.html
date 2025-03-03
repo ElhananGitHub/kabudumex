@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="barcode" width="800" height="800"
+    style="background-color:#333"></canvas>
+    <div id="canvasq"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Firebase -->
+
+    
+    
+    <script src="plugins/jszip/jszip.min.js"></script>
+    <script src="plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="plugins/pdfmake/vfs_fonts.js"></script>
+
+    <!-- QR -->
+    <script type="text/javascript" src="public/js/qrious.min.js"></script>
+
+    <script>
+        var multiples = []
+
+        var alumnas = [
+{"Alumna":"ARAKINDJI CHACALO IVETTE","Grupo":"1A"},
+{"Alumna":"ASQUENAZI MAMIYE SARA","Grupo":"1A"},
+{"Alumna":"AZERBAT HILU EMILY","Grupo":"1A"},
+{"Alumna":"CAIN HAMUI MIJAL","Grupo":"1A"},
+{"Alumna":"CHAMA HEFFES SARA","Grupo":"1A"},
+{"Alumna":"CHOCRON HALWANI PERLA","Grupo":"1A"},
+{"Alumna":"DJADDAH SMEKE JANET","Grupo":"1A"},
+{"Alumna":"GRINBERG LEVY TALIA","Grupo":"1A"},
+{"Alumna":"HANONO HANONO RUTH","Grupo":"1A"},
+{"Alumna":"HILU ABADI YAEL","Grupo":"1A"},
+{"Alumna":"LEVY LANIADO COTY SHIREL","Grupo":"1A"},
+{"Alumna":"MARCOS HANONO LINDA","Grupo":"1A"},
+{"Alumna":"ROMANO HILU BETTY","Grupo":"1A"},
+{"Alumna":"SENADO BIRCH MIRIAM","Grupo":"1A"},
+{"Alumna":"WACHNOVETZKY KASSIN BATIA","Grupo":"1A"},
+{"Alumna":"WEINREICH ZILBERT RIVKA","Grupo":"1A"},
+{"Alumna":"ASKENAZI AMIGA RUTH","Grupo":"1B"},
+{"Alumna":"AVERBUY URFALI SHIRA","Grupo":"1B"},
+{"Alumna":"CHAMI HOP SARA","Grupo":"1B"},
+{"Alumna":"CHAYO CREDI SHULAMITH","Grupo":"1B"},
+{"Alumna":"CHEMEA ANZA DEBORA","Grupo":"1B"},
+{"Alumna":"COHEN-MICHAN BATIA","Grupo":"1B"},
+{"Alumna":"HANAN AVERBUY SARA","Grupo":"1B"},
+{"Alumna":"JASQUI SUUED ABIGAIL","Grupo":"1B"},
+{"Alumna":"SACAL ABOUD PNINA","Grupo":"1B"},
+{"Alumna":"SAKAL DABBAH MAGGIE","Grupo":"1B"},
+{"Alumna":"SETTON GREGO SILVIA YAEL","Grupo":"1B"},
+{"Alumna":"SIMANTOB ROTH SHARON","Grupo":"1B"},
+{"Alumna":"SIMANTOB ROTH SHIRLY","Grupo":"1B"},
+{"Alumna":"SUEKE MARASHLI SARAH","Grupo":"1B"},
+{"Alumna":"URFALI HALABE YEHUDIT","Grupo":"1B"},
+{"Alumna":"ABRAMCZYK LIBERSOHN DEBORA","Grupo":"1C"},
+{"Alumna":"ALFIE SABA LINDA","Grupo":"1C"},
+{"Alumna":"ANTEBI MASSRE SARAH","Grupo":"1C"},
+{"Alumna":"ASKENAZI MOSTKOFF RINA","Grupo":"1C"},
+{"Alumna":"BEHAR LANIADO HANA","Grupo":"1C"},
+{"Alumna":"CHACALO HUSNY TUNI","Grupo":"1C"},
+{"Alumna":"CHARABATI MARCOS MILLY","Grupo":"1C"},
+{"Alumna":"CHAYO IDI SILVIA","Grupo":"1C"},
+{"Alumna":"CREDI AMIGA MIRIAM","Grupo":"1C"},
+{"Alumna":"HABER CHAYO EDNA SARA","Grupo":"1C"},
+{"Alumna":"HEFFES VALENCIA LYDIA RAJEL","Grupo":"1C"},
+{"Alumna":"LEVY AKKAD BITYA","Grupo":"1C"},
+{"Alumna":"MICHAN ZONANA YAEL","Grupo":"1C"},
+{"Alumna":"ROMANO ALFIE LETY","Grupo":"1C"},
+{"Alumna":"SAAD MOGRABI NAHMAD DEBORA","Grupo":"1C"},
+{"Alumna":"TUACHI METTA ELIZABETH","Grupo":"1C"},
+{"Alumna":"ABADI SAKAL YAEL","Grupo":"2A"},
+{"Alumna":"ASSEO PENHOS TAMAR","Grupo":"2A"},
+{"Alumna":"CASSAB ABOUD MARILYN","Grupo":"2A"},
+{"Alumna":"ENTEBI TABACHNIK SHARON","Grupo":"2A"},
+{"Alumna":"HABER CHEREM SOFIA","Grupo":"2A"},
+{"Alumna":"KASSIN SEFAMI ZEQUI","Grupo":"2A"},
+{"Alumna":"MAIMUNN HUSNI MIRIAM","Grupo":"2A"},
+{"Alumna":"MAMIEH ANTEBI ZEQUI","Grupo":"2A"},
+{"Alumna":"MUSTRI KIZON DEBY","Grupo":"2A"},
+{"Alumna":"ORPALI KASSIN ADELLE","Grupo":"2A"},
+{"Alumna":"SENADO BIRCH CLAIRE","Grupo":"2A"},
+{"Alumna":"SHAMY HIBE MIRIAM","Grupo":"2A"},
+{"Alumna":"SLOMIANSKY GEORGE ETHEL NELLIE","Grupo":"2A"},
+{"Alumna":"SUEKE MARASHLI BATIA","Grupo":"2A"},
+{"Alumna":"ZAED BENZAQUEN JANA","Grupo":"2A"},
+{"Alumna":"ZAED RAHAV NAOMI","Grupo":"2A"},
+{"Alumna":"ZONANA MOHANA TANY","Grupo":"2A"},
+{"Alumna":"ASKENAZI SHUEKE SARI","Grupo":"2B"},
+{"Alumna":"BASSUL JALIFE BATIA","Grupo":"2B"},
+{"Alumna":"CHEREM HARARI YAEL","Grupo":"2B"},
+{"Alumna":"CREDI HIBE BATYA","Grupo":"2B"},
+{"Alumna":"HILU ZONANA VICKY","Grupo":"2B"},
+{"Alumna":"JASQUI SUTTON ORLY","Grupo":"2B"},
+{"Alumna":"KASSIN COHEN LETY","Grupo":"2B"},
+{"Alumna":"MAMIEH ANTEBI VICKY","Grupo":"2B"},
+{"Alumna":"MICHAN HANONO DEBORAH","Grupo":"2B"},
+{"Alumna":"MOUSSAN TUSSIE SARA","Grupo":"2B"},
+{"Alumna":"NAGAR SUED SILVIA","Grupo":"2B"},
+{"Alumna":"SACAL AMIGA MISHELLE","Grupo":"2B"},
+{"Alumna":"SAMRA ZAGA YAEL","Grupo":"2B"},
+{"Alumna":"SHAMY HIBE YAEL","Grupo":"2B"},
+{"Alumna":"SITT YEDID ESTHER","Grupo":"2B"},
+{"Alumna":"BARZANI SELEM RUTH JAIA","Grupo":"2C"},
+{"Alumna":"BENARROCH CHACALO SARA","Grupo":"2C"},
+{"Alumna":"CASSAB SENADO ELENA","Grupo":"2C"},
+{"Alumna":"HILU ASKENAZI BELLA","Grupo":"2C"},
+{"Alumna":"HILU KASSIN TANIA","Grupo":"2C"},
+{"Alumna":"HUSSNY LEVI LILIAN","Grupo":"2C"},
+{"Alumna":"KASSIN TUSSIE LIORA","Grupo":"2C"},
+{"Alumna":"MICHAN SITT JUDITH","Grupo":"2C"},
+{"Alumna":"MOLHO CASSAB SARA BATYA","Grupo":"2C"},
+{"Alumna":"ORPALI ELNECAVE SHULAMIT","Grupo":"2C"},
+{"Alumna":"SHAMY HIBE RAJEL","Grupo":"2C"},
+{"Alumna":"SROUGO ALFILLE LINDA","Grupo":"2C"},
+{"Alumna":"ZONANA IDI MIJAL","Grupo":"2C"},
+{"Alumna":"ARAKANCHI CAMHI SHIFRA","Grupo":"3A"},
+{"Alumna":"COHEN-IMACH COHEN BATIA","Grupo":"3A"},
+{"Alumna":"COHEN KASSIN GINA","Grupo":"3A"},
+{"Alumna":"CREDI AMIGA ROSA","Grupo":"3A"},
+{"Alumna":"HILU ASKENAZI MILLY","Grupo":"3A"},
+{"Alumna":"HUSNI SAAD JUDITH","Grupo":"3A"},
+{"Alumna":"HUSNI SUED ESTHER","Grupo":"3A"},
+{"Alumna":"HUSNY HANONO MIRIAM","Grupo":"3A"},
+{"Alumna":"KASSIN CREDI SHULAMITH","Grupo":"3A"},
+{"Alumna":"MARCOS MUSTRI NELLY","Grupo":"3A"},
+{"Alumna":"MIZRAHI HARARI LINDA","Grupo":"3A"},
+{"Alumna":"NAHMAD KASSIN LEAH","Grupo":"3A"},
+{"Alumna":"NAYAR CHAYO YEMY","Grupo":"3A"},
+{"Alumna":"SALAME SAAD JUDITH","Grupo":"3A"},
+{"Alumna":"SIMANTOB ROTH ABIGAIL","Grupo":"3A"},
+{"Alumna":"TUACHI-BETECH SARY","Grupo":"3A"},
+{"Alumna":"ZAYAT ASKENAZI SARA DENISSE","Grupo":"3A"},
+{"Alumna":"ZEITOUNE COJAB DORET","Grupo":"3A"},
+{"Alumna":"AMBE LEVY RAQUEL","Grupo":"3B"},
+{"Alumna":"AMIGA PENHOS ESTHER","Grupo":"3B"},
+{"Alumna":"ASKENAZI SHAMOSH BATIA","Grupo":"3B"},
+{"Alumna":"AVERBUY URFALI SHULAMIT","Grupo":"3B"},
+{"Alumna":"CATTAN KASSIN BATIA","Grupo":"3B"},
+{"Alumna":"CHACALO MICHAN LINDA","Grupo":"3B"},
+{"Alumna":"CHAMI HOP LINA","Grupo":"3B"},
+{"Alumna":"CHAYO HARARI SARI","Grupo":"3B"},
+{"Alumna":"DANA NAHMIAS MIRIAM","Grupo":"3B"},
+{"Alumna":"EZBAN KASSIN BELLA","Grupo":"3B"},
+{"Alumna":"LANIADO ZAED ABIGAIL","Grupo":"3B"},
+{"Alumna":"LEVY KASSIN ALICE","Grupo":"3B"},
+{"Alumna":"LOBATON MASRI RUTH","Grupo":"3B"},
+{"Alumna":"MANN SHUEKE GALIT","Grupo":"3B"},
+{"Alumna":"MAYA TUACHI SARA","Grupo":"3B"},
+{"Alumna":"MICHAN LEVY LINDA","Grupo":"3B"},
+{"Alumna":"TUACHI BETECH ELVY","Grupo":"3B"},
+{"Alumna":"YABRA COHEN SARA","Grupo":"3B"},
+{"Alumna":"ZAYAT HANONO RUT","Grupo":"3B"},
+{"Alumna":"MORA","Grupo":"MOROT"}
+]
+
+        for(i=0 ; i < alumnas.length; i++){
+            multiples.push({
+                name : alumnas[i].Alumna,
+                grupo: alumnas[i].Grupo,
+                1 : "",
+                2 : "",
+                3 : "",
+                4 : "",
+                5 : "",
+                6 : "",
+                7 : "",
+                8 : "",
+                9 : "",
+                10 : "",
+                11 : "",
+                12 : ""
+            })
+        }
+
+        //Mix up the multiples array
+        for(i = multiples.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * i)
+            var k = multiples[i]
+            multiples[i] = multiples[j]
+            multiples[j] = k
+        }
+
+        //Split the array in two
+        var half = Math.ceil(multiples.length / 2)
+        var firstHalf = multiples.splice(0, half)
+        var secondHalf = multiples.splice(-half)
+
+        for(x = 1; x < 13; x++){
+            for(y = 0; y < firstHalf.length; y++){
+               firstHalf[y][x] = secondHalf[y].name
+                secondHalf[y][x] = firstHalf[y].name
+            }
+            var thespliced = secondHalf.shift()
+            secondHalf.push(thespliced)
+
+        }
+
+        var multiples2 = firstHalf.concat(secondHalf)
+        console.log(multiples2)
+
+
+
+        // for(z = 0; z < alumnas.length; z++){
+
+        //   var e = multiples[z]
+  
+        //   for(x = 1; x < 13; x++){
+        //     if(e[x] == ""){
+        //     do{
+        //       var random = Math.floor(Math.random() * alumnas.length)
+        //       var validator = Object.entries(multiples[random]).every(([key, value]) => {
+        //         if(value == e.name){
+        //           return false
+        //         }
+        //         return true
+        //       })
+        //     }while(multiples[random][x] != "")
+        //     multiples[random][x] = e.name
+        //     e[x] = multiples[random].name
+        //     }
+        //   }
+
+        //   }
+
+
+        //   console.log(multiples)
+
+        //   var repeatedName = 0
+        //   var repeatedTime = 0
+
+        //   //Validate that there are no repetitions
+        //   for(x in multiples){
+        //     var e = multiples[x]
+        //     var names = []
+        //     for(y in e){
+        //       if(y == "name"){
+        //         continue
+        //       }
+        //       if(e[y] == e.name){
+        //         repeatedName++
+        //       }
+        //       if(names.includes(e[y])){
+        //         repeatedTime++
+        //       }
+
+
+        //       names.push(e[y])
+        //     }
+        //   }
+
+        //   console.log({repeatedName, repeatedTime})
+
+generarPdfEtiquetas(multiples2);
+
+
+
+
+//Function to generate PDF of labels
+function generarPdfEtiquetas(multiples) {
+
+var dd = []
+
+  for(x in multiples){
+    //console.log(multiples[x])
+
+
+var canvas = document.createElement("canvas");
+canvas.width = 800;
+canvas.height = 800;
+canvas.id = "canvasqq";
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+drawClock()
+
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawNumbers2(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.05;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.05 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(multiples[x][num].split(' ').pop() + " " +  multiples[x][num].split(' ')[0] , 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawNumbers2(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.10 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString() , 0, -20);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    //Random hour
+    var hour = Math.floor(Math.random() * 12) + 1;
+    var minute = Math.floor(Math.random() * 60) + 1;
+    var second = Math.floor(Math.random() * 60) + 1;
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+
+document.getElementById("canvasq").appendChild(canvas);
+
+
+    var imgdata = document.getElementById("canvasqq").toDataURL('image/png');
+    canvas.remove();
+    
+
+
+
+  var page = [
+
+  {
+          image: imgdata,
+          width: 500,
+          alignment: 'center',
+          
+    },
+    
+    {
+      
+          text: [
+            { text: `Nombre: ${multiples[x].name}\n`, alignment: 'center',  fontSize: 16},
+            { text: `Grupo: ${multiples[x].grupo}\n`, alignment: 'center',  fontSize: 12},
+            // { text: `12:00: ${multiples[x]["1"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `01:00: ${multiples[x]["2"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `02:00: ${multiples[x]["3"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `03:00: ${multiples[x]["4"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `04:00: ${multiples[x]["5"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `05:00: ${multiples[x]["6"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `06:00: ${multiples[x]["7"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `07:00: ${multiples[x]["8"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `08:00: ${multiples[x]["9"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `09:00: ${multiples[x]["10"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `10:00: ${multiples[x]["11"]}\n`, alignment: 'center',  fontSize: 8},
+            // { text: `11:00: ${multiples[x]["12"]}\n`, alignment: 'center',  fontSize: 8},
+          ],
+          pageBreak: 'after'
+    },
+  ]
+  dd.push(...page);
+  }
+  var docDefinition = {
+    header: "Actividad Reloj",
+    content: dd,
+    pageSize: 'A4',
+    pageOrientation: 'landscape',
+    pageMargins: [3, 3, 3, 3]
+    }
+
+    console.log(docDefinition)
+
+  pdfMake.createPdf(docDefinition).download(`PDF QR`);
+
+}
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head id="header">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nube : Egresos</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
+    />
+
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-select/css/select.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="public/css/adminlte.css" />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="public/css/custom.css" />
+  </head>
+  <body class="sidebar-mini layout-fixed sidebar-collapse">
+    <div id="wrapper" class="wrapper">
+      <nav
+        id="navtop"
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+      ></nav>
+
+      <aside
+        id="navaside"
+        class="main-sidebar sidebar-light-primary elevation-4"
+      ></aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div id="breadcrumb" class="content-header"></div>
+
+        <!-- Main content -->
+        <section id="section" class="content">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <!-- left column -->
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <button
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#modal-add"
+                      onclick="empezarNuevoEgreso();"
+                    >
+                      <i class="fas fa-plus"></i> Nuevo Egreso
+                    </button>
+                  </div>
+                  <input type="hidden" id="consecutivo" />
+                  <!-- /.card-header -->
+                  <div id="tblEgresos" class="card-body"></div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <div id="qrDiv" style="width: 10px; height: 10px; overflow: hidden"></div>
+
+      <footer id="footer" class="main-footer"></footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- modal -->
+    <div class="modal fade" id="modal-add">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Egreso</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-primary">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Registrar Nuevo Egreso
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmEgresosAdd" autocomplete="off">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Receptor</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="selectReceptor"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Modalidad</label>
+                                    <select
+                                      onchange="onchangeModalidadTipo()"
+                                      class="form-control select2"
+                                      id="modalidadTipo"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Concepto</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="conceptosSelect"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label id="idOriginalNumeroRecibo"
+                                      >Descripcion</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="descripcionAdd"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label id="idOriginalNumeroRecibo"
+                                      >Divisa</label
+                                    >
+                                    <select
+                                      class="form-control select2"
+                                      id="divisaSelect"
+                                      onchange="onChangeDivisa()"
+                                      required
+                                    >
+                                      <option value="MXN">MXN</option>
+                                      <option value="USD">USD</option>
+                                  </select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row" id="divMontoUsdInformativo" style="display: none;">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label id="labelMontoUsdInformativo"
+                                      >Monto USD (informativo)</label
+                                    >
+                                    <input
+                                      type="number"
+                                      class="form-control"
+                                      id="montoUsdInformativo"
+                                      placeholder="0"
+                                      value="0"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label id="idOriginalNumeroRecibo"
+                                      >Monto</label
+                                    >
+                                    <input
+                                      type="number"
+                                      class="form-control"
+                                      id="montoAdd"
+                                      data-id="1"
+                                      placeholder="0"
+                                      oninput="onChangeMontos()"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label id="idOriginalNumeroRecibo"
+                                      >Monto Total</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="montoTotalAdd"
+                                      data-id="1"
+                                      disabled
+                                      placeholder="0"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row" id="parcialidadDiv">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Parcialidad</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="parcialidadSelect"
+                                      required
+                                      onchange="onChangeParcialidad()"
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row" id="cantidadParcialidadDiv">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Cantidad Parcialidad</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="cantidadParcialidadSelect"
+                                      onchange="onChangeMontos()"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row" id="diaCobroDiv">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Dia de cobro</label>
+                                    <input
+                                      type="number"
+                                      class="form-control"
+                                      id="diaCobro"
+                                      maxlength="2"
+                                      max="31"
+                                      min="1"
+                                      minlength="1"
+                                      oninput="this.value = this.value > 31 ? 31 : Math.abs(this.value)"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Fecha de inicio</label>
+                                    <input
+                                      type="date"
+                                      placeholder="dd-mm-yyyy"
+                                      class="form-control"
+                                      id="fechaInicioAdd"
+                                      data-id="1"
+                                      placeholder="0"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Metodo de pago</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="metodoPagoSelect"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Empresa</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="empresaSelect"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Asignado</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="asignadoSelect"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group" id="divOrdenCompra">
+                                    <label>Orden de compra</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="ordenCompra"
+                                      onchange="onChangeOrdenCompra()"
+                                    ></select>
+                                    <div id="divOrdenCompraDesglose"></div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>IVA</label>
+                                    <input
+                                      type="number"
+                                      class="form-control"
+                                      id="ivaAdd"
+                                      data-id="1"
+                                      placeholder="0"
+                                      value="0"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label>Estatus</label>
+                                    <select
+                                      class="form-control select2"
+                                      id="estatusSelect"
+                                      required
+                                    ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="form-group">
+                                    <label id="idOriginalNumeroRecibo"
+                                      >Comentarios</label
+                                    >
+                                    <textarea
+                                      type="text"
+                                      class="form-control"
+                                      id="comentariosAdd"
+                                    ></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button
+              type="button"
+              class="btn btn-default"
+              id="btnCerrarModal"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="guardarNuevoEgreso()"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-add -->
+
+    <!-- modal-cancelar -->
+    <div class="modal fade" id="modal-cancelar">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Cancelar Egreso</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <!-- /.card-header -->
+
+                    <!-- form start -->
+                    <div class="card-body">
+                      <div id="callout-bg-form" class="callout callout-warning">
+                        <div class="row">
+                          <div class="col-8">
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1"
+                                >Comentarios</label
+                              >
+                              <textarea
+                                class="form-control"
+                                id="txtComentariosCancel"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <input type="hidden" id="id_edit" />
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="cancelarEgreso()"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-cancelar -->
+
+    <!-- modal-detalle -->
+    <div class="modal fade" id="modal-detalle">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Detalle cuentas por pagar</h4>
+          </div>
+          <div class="modal-body">
+            <table
+              id="tblDetalleCuentas"
+              class="table table-bordered table-striped"
+            >
+              <thead>
+                <tr>
+                  <th>ID promesa</th>
+                  <th>Estatus</th>
+                  <th>Fecha</th>
+                  <th>Monto</th>
+                  <th>Pago</th>
+                  <th>Saldo</th>
+                  <th>comentarios</th>
+                </tr>
+              </thead>
+              <tbody id="tablaDetalle"></tbody>
+            </table>
+            <div class="card" id="cardTotales">
+              <div class="col-12">
+                <div><b>Monto Total: </b><span id="idTotalMonto"></span></div>
+                <div><b>Pago Total: </b><span id="idTotalPago"></span></div>
+                <div><b>Saldo Total: </b><span id="idTotaSaldo"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-detalle -->
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+      <!-- Select2 -->
+      <script src="plugins/select2/js/select2.min.js"></script>
+    <!-- Firebase - Custom -->
+    <script src="estilos.js"></script>
+    <script src="firebase.js"></script>
+    <script src="verifyAuth.js"></script>
+    <script src="logsCustom.js"></script>
+    <script src="index.js"></script>
+    <script src="egresos.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <script src="plugins/datatables-select/js/select.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/jszip/jszip.min.js"></script>
+    <script src="plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="public/js/adminlte.js"></script>
+    <!-- Excel -->
+    <script type="text/javascript" src="public/js/xlsx.full.min.js"></script>
+    
+  </body>
+</html>

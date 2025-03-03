@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head id="header">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nube : Usuarios y Permisos</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-select/css/select.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="public/css/adminlte.css" />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="public/css/custom.css" />
+  </head>
+  <body class="sidebar-mini layout-fixed sidebar-collapse">
+    <div id="wrapper" class="wrapper">
+      <nav
+        id="navtop"
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+      ></nav>
+
+      <aside
+        id="navaside"
+        class="main-sidebar sidebar-light-primary elevation-4"
+      ></aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div id="breadcrumb" class="content-header"></div>
+
+        <!-- Main content -->
+        <section id="section" class="content">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <!-- left column -->
+              <div class="col-12">
+                <div class="card">
+                  <!-- /.card-header -->
+                  <div class="card-header">
+                    <button
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#modal-addUser"
+                      onclick="agregarNuevoUsuario()"
+                    >
+                      <i class="fas fa-plus"></i> Nuevo Usuario
+                    </button>
+                  </div>
+                  <div id="tblContabilidad" class="card-body"></div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <div id="qrDiv" style="width: 10px; height: 10px; overflow: hidden"></div>
+
+      <footer id="footer" class="main-footer"></footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- modal-detalle -->
+    <div class="modal fade" id="modal-editar">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="tituloHistorial">Editar Usuario</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="text" class="form-control" id="emailEdit" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div
+                  id="tblPermisosEditar"
+                  style="height: 300px; overflow-x: hidden"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="guardarPermisosEditados()"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-detalle -->
+
+    <!-- modal-add -->
+    <div class="modal fade" id="modal-addUser">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Usuario</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="emailFirebase"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                      <label>UID</label>
+                      <input type="text" class="form-control" id="idFirebase" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div
+                  id="tblPermisosAdd"
+                  style="height: 300px; overflow-x: hidden"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="guardarNuevoUsuario()"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-add -->
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <!-- Firebase - Custom -->
+    <script src="estilos.js"></script>
+    <script src="firebase.js"></script>
+    <script src="verifyAuth.js"></script>
+    <script src="logsCustom.js"></script>
+    <script src="index.js"></script>
+    <script src="UsuariosyPermisos.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <script src="plugins/datatables-select/js/select.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/jszip/jszip.min.js"></script>
+    <script src="plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="public/js/adminlte.js"></script>
+    <!-- Excel -->
+    <script type="text/javascript" src="public/js/xlsx.full.min.js"></script>
+    <!-- QR -->
+    <script type="text/javascript" src="public/js/qrious.min.js"></script>
+  </body>
+</html>

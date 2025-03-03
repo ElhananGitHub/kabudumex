@@ -1,0 +1,26 @@
+1. Temporary Front-End solution: 
+You can test if your API integration is working:
+Click on window -> type run and hit enter -> in the command window copy:
+
+chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+
+This will open a new "Chrome" window where you can work easily. This is a temporary solution. Every time you will have to work with this chrome window.
+
+2. Permanent solution:
+In the backend code, the developer needs to add an annotation @Crossorigin right above the CRUD api call method.
+
+
+
+******************************************************************************
+
+1. Solución Front-End Temporal:
+Puede probar si su integración API está funcionando:
+Haga clic en ventana -> escriba ejecutar y presione enter -> en la ventana de comando copiar:
+
+chrome.exe --user-data-dir="C://Sesión de desarrollo de Chrome" --disable-web-security
+
+Esto abrirá una nueva ventana de "Chrome" donde podrás trabajar fácilmente. Esta es una solución temporal. Cada vez tendrás que trabajar con esta ventana de Chrome.
+
+2. Solución permanente:
+En el código backend, el desarrollador debe agregar una anotación @Crossorigin justo encima del método de llamada de la API CRUD.
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head id="header">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nube : Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-select/css/select.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="public/css/adminlte.css" />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="public/css/custom.css" />
+  </head>
+  <body class="sidebar-mini layout-fixed sidebar-collapse">
+    <div id="wrapper" class="wrapper">
+      <nav
+        id="navtop"
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+      ></nav>
+
+      <aside
+        id="navaside"
+        class="main-sidebar sidebar-light-primary elevation-4"
+      ></aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div id="breadcrumb" class="content-header"></div>
+
+        <!-- Main content -->
+        <section id="section" class="content">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <!-- left column -->
+              <div class="col-12">
+                <div class="card">
+                  <div
+                    id="addProductosHeader"
+                    class="card-header"
+                    style="display: none"
+                  >
+                    <div class="callout callout-warning">
+                      <div class="form-group">
+                        <label>Número de Orden de Venta:</label>
+                        <span id="numero_orden_venta_venta"></span>
+                      </div>
+                      <div class="form-group">
+                        <label>Cliente:</label> <span id="cliente_venta"></span>
+                      </div>
+                      <div class="row">
+                        <div class="col-9">
+                          <label>Sku Manual:</label>
+                          <input
+                            type="text"
+                            class="col-6"
+                            id="skuManual"
+                            oninput="agregarSkuByInput(this.value)"
+                          />
+
+                          <button
+                            type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal"
+                            onclick="onScanSuccess(null,true)"
+                          >
+                            Agregar
+                          </button>
+                        </div>
+                        <div class="col-3">
+                          <label for="fileExcel" class="btn btn-success">
+                            <i class="fas fa-file-excel"></i></label>
+                            <input type="file" id="fileExcel" style="display: none" onchange="cargarExcelSurtidoMasivos()">
+                        
+                      </div>
+                      </div>
+                      <div class="col-12">
+                        <input type="hidden" id="id_docs" />
+                        <input type="hidden" id="claves" />
+                        <input type="hidden" id="categoriaOrden" />
+                      </div>
+                      <div class="col-12" id="reader"></div>
+                      <!--<div id="result">Result Here</div>-->
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div id="tblVenta" class="card-body"></div>
+                  <!-- /.card-body -->
+                  <div id="buttons" class="card-footer"></div>
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <footer id="footer" class="main-footer"></footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- modal-edit -->
+    <div class="modal fade" id="modal-product">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Órden de Venta</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Agregar Mercancia a la Órden
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmMercanciaEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div class="callout callout-warning">
+                            <div class="form-group">
+                              <label>Número de Orden de Venta:</label>
+                              <span id="numero_orden_venta_venta"></span>
+                            </div>
+                            <div class="form-group">
+                              <label>Cliente:</label>
+                              <span id="cliente_venta"></span>
+                            </div>
+                          </div>
+
+                          <div id="addSKU"></div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit" />
+                      </form>
+                    </div>
+
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="editarRegistro()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-edit -->
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <!-- QR -->
+    <script src="public/js/html5-qrcode.min.js"></script>
+    <!-- Firebase - Custom -->
+    <script src="estilos.js"></script>
+    <script src="firebase.js"></script>
+    <script src="verifyAuth.js"></script>
+    <script src="logsCustom.js"></script>
+    <script src="index.js"></script>
+    <script src="generalTools.js"></script>
+    <script src="almacen.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <script src="plugins/datatables-select/js/select.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/jszip/jszip.min.js"></script>
+    <script src="plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="public/js/adminlte.js"></script>
+     <!-- Excel -->
+     <script type="text/javascript" src="public/js/xlsx.full.min.js"></script>
+
+    <script></script>
+  </body>
+</html>

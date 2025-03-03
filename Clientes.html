@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head id="header">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nube : Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-select/css/select.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="public/css/adminlte.css" />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="public/css/custom.css" />
+  </head>
+  <body class="sidebar-mini layout-fixed sidebar-collapse">
+    <div id="wrapper" class="wrapper">
+      <nav
+        id="navtop"
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+      ></nav>
+
+      <aside
+        id="navaside"
+        class="main-sidebar sidebar-light-primary elevation-4"
+      ></aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div id="breadcrumb" class="content-header"></div>
+
+        <!-- Main content -->
+        <section id="section" class="content">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <!-- left column -->
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <button
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#modal-add"
+                    >
+                      <i class="fas fa-plus"></i> Agregar Cliente
+                    </button>
+
+                    <!--
+                                    <label for="fileExcel" class="btn btn-success" style="margin-top: 8px; font-weight: lighter;"> <i class="fas fa-file-excel"></i> Cargar Excel</label>
+                                    <input type="file" id="fileExcel" style="display: none;" onchange="cargarExcel()">
+                                    -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div id="tblCliente" class="card-body"></div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <footer id="footer" class="main-footer"></footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- modal -->
+    <div class="modal fade" id="modal-add">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Cliente</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-primary">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Agregar Cliente
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmClienteAdd" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-info"
+                          >
+                            <div class="form-group">
+                              <label>Nombre del Cliente</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nombre_cliente"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Nombre del Contacto</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nombre_contacto"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Teléfono del Contacto</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="telefono_contacto"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="email_contacto"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Dirección de Entrega</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="direccion_entrega"
+                                placeholder=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="agregarRegistro()"
+            >
+              Agregar Cliente
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-add -->
+
+    <!-- modal-edit -->
+    <div class="modal fade" id="modal-edit">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Cliente</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Editar Cliente
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmClienteEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-warning"
+                          >
+                            <div class="form-group">
+                              <label>Nombre del Cliente</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nombre_cliente_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Nombre del Contacto</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="nombre_contacto_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Teléfono del Contacto</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="telefono_contacto_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="email_contacto_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Dirección de Entrega</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="direccion_entrega_edit"
+                                placeholder=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit" />
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="editarRegistro()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-edit -->
+
+    <!-- modal-edit-multiple -->
+    <div class="modal fade" id="modal-edit-multiple">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Cliente</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Editar Multiple Cliente
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmClienteEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-warning"
+                          >
+                            <div class="row">
+                              <div class="col-12">
+                                <table
+                                  id="edicionMultiple"
+                                  class="table table-striped"
+                                >
+                                  <thead>
+                                    <tr>
+                                      <th><label>Nombre Cliente:</label></th>
+                                      <th><label>Nombre Contacto:</label></th>
+                                      <th><label>Teléfono Contacto:</label></th>
+                                      <th>
+                                        <label>Email:</label>
+                                      </th>
+                                      <th>
+                                        <label>Domicilio de Entrega:</label>
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit_multiple" />
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="actualizarMultiple()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-edit-multiple -->
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <!-- Firebase - Custom -->
+    <script src="estilos.js"></script>
+    <script src="firebase.js"></script>
+    <script src="verifyAuth.js"></script>
+    <script src="logsCustom.js"></script>
+    <script src="index.js"></script>
+    <script src="cliente.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <script src="plugins/datatables-select/js/select.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/jszip/jszip.min.js"></script>
+    <script src="plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="public/js/adminlte.js"></script>
+    <!-- Excel -->
+    <script type="text/javascript" src="public/js/xlsx.full.min.js"></script>
+  </body>
+</html>

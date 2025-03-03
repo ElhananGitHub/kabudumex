@@ -1,0 +1,138 @@
+.bg-primary {
+  background-color: #002c48 !important;
+}
+.bg-red {
+  background-color: #ff9696 !important;
+}
+.bg-secondary {
+  background-color: #7dbdd8 !important;
+}
+.c-black {
+  color: #000000 !important;
+}
+.c-gray {
+  color: #6d6a6a;
+}
+.c-primary {
+  color: #002c48 !important;
+}
+.c-secondary {
+  color: #7dbdd8 !important;
+}
+.c-white {
+  color: #ffffff;
+}
+.cur-pointer {
+  cursor: pointer;
+}
+.border-1 {
+  border: 2px solid #4627c3;
+}
+.btn-primary {
+  background-color: #002c48 !important;
+  border-color: #131a21 !important;
+}
+.btn-primary:hover {
+  background-color: #7dbdd8 !important;
+}
+.card-primary.card-outline {
+  border-top: 3px solid #7dbdd8;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.fw-300 {
+  font-weight: 300;
+}
+.icon-x {
+  width: 12px;
+}
+.item-sku {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 5px;
+  line-height: 17px;
+}
+.loading-invisible {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	opacity: 0.8;
+	background-color: #011036;
+}
+.loading-spinner {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	width: auto;
+	height: 100px;
+}
+.loading-text {
+	width: auto;
+	height: 100px;
+	text-align: center;
+	margin: 0 auto;
+}
+.m-bottom-10 {
+  margin-bottom: 10px;
+}
+.pad-bottom-10 {
+  padding-bottom: 10px;
+}
+.pad-left-2 {
+  padding-left: 2px;
+}
+.text-light {
+  color: #343a40 !important;
+}
+table.dataTable tbody tr.selected {
+  background-color: #b0bed9 !important;
+}
+tfoot {
+  display: table-header-group;
+}
+
+.titleDashbord {
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  .titleDashbord {
+    font-size: 8rem;
+  }
+}
+
+
+/* Acordion Table */
+.tbl-accordion {
+  margin: 0 auto;
+  width: 900px;
+  border: 1px solid #d9d9d9;
+}
+.tbl-accordion thead {
+  background: #d9d9d9;
+}
+.tbl-accordion .tbl-accordion-nested {
+  width: 100%;
+}
+.tbl-accordion .tbl-accordion-nested tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+.tbl-accordion .tbl-accordion-nested td,
+.tbl-accordion .tbl-accordion-nested th {
+  padding: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.tbl-accordion .tbl-accordion-nested .tbl-accordion-section {
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+}
+/* Acordion Table */

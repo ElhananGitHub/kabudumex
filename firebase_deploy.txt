@@ -1,0 +1,57 @@
+>firebase login:ci
+
+Waiting for authentication...
+
++  Success! Use this token to login on a CI server:
+
+1//0fFd_cddGGFjXCgYIARAAGA8SNwF-L9IroJe4_TMx-jlkn4fIICweu4skgjxhit6u5-woBYZwRR8BEA2xalsh2mXfTHv8XxLFNqs
+
+Example: firebase deploy --token "$FIREBASE_TOKEN"
+
+
+// Subir el deploy de la web al sitio marketertextil
+firebase deploy --only hosting --token "1//0faWDHvdzHXuNCgYIARAAGA8SNwF-L9IrSzYRKTvgU8B7p7BUsQBatFDuUtkIBWb4vwV5bWa64C6iPpaEwPuEkF8Ub_Khri1Ilcs"
+
+
+
+// Subir las funciones al Cloud Functions de Firebase
+firebase serve --only functions --token "1//0faWDHvdzHXuNCgYIARAAGA8SNwF-L9IrSzYRKTvgU8B7p7BUsQBatFDuUtkIBWb4vwV5bWa64C6iPpaEwPuEkF8Ub_Khri1Ilcs"
+
+
+
+firebase emulators:start --only functions
+
+
+
+
+Error: 16 UNAUTHENTICATED: Failed to retrieve auth metadata with error: invalid_grant
+I have resolved the issue and it was because of the default service account being disabled.
+I faced the same error, it was a authentication issue due to credentials. Below command fixed it for me.
+gcloud auth application-default login
+
+
+PS D:\xampp\htdocs\Nube\functions> gcloud auth application-default login
+Your browser has been opened to visit:
+
+    https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8085%2F&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fsqlservice.login&state=qahWx1KFVmEQR4aZcCL3D0tyRk3fig&access_type=offline&code_challenge=tf46S9d1yseoJfBD0cfyffdRIICoFIQVOtFzzQXhw9s&code_challenge_method=S256
+
+
+Credentials saved to file: [C:\Users\Conde\AppData\Roaming\gcloud\application_default_credentials.json]
+
+These credentials will be used by any library that requests Application Default Credentials (ADC).
+
+Quota project "marketertextil" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
+
+
+PS D:\xampp\htdocs\Nube\functions> gcloud config list
+[accessibility]
+screen_reader = True
+[compute]
+region = us-central1
+zone = us-central1-a
+[core]
+account = jamiropuff@gmail.com
+disable_usage_reporting = False
+project = marketertextil
+
+Your active configuration is: [default]

@@ -1,0 +1,115 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "MLVentas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "mercanciaCostoCorrecto",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "mercanciaComentarioCosto",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "MLVentas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "shipping_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "tipoEnvio",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fechaRegistro",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "MLVentas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "iterations",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "MLVentas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "vendidoPor",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "costoActualizado",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Ventas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "delete",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "EstatusPedido",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Ventas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "delete",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fechaVenta",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "webhookMercadoLibre",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "topic",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "received",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

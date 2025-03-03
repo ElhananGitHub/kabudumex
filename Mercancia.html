@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head id="header">
+    <meta charset="utf-8" />
+    <style>
+      .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nube : Mercancia</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-select/css/select.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="public/css/adminlte.css" />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="public/css/custom.css" />
+  </head>
+  <body class="sidebar-mini layout-fixed sidebar-collapse">
+    <div id="wrapper" class="wrapper">
+      <nav
+        id="navtop"
+        class="main-header navbar navbar-expand navbar-white navbar-light"
+      ></nav>
+
+      <aside
+        id="navaside"
+        class="main-sidebar sidebar-light-primary elevation-4"
+      ></aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div id="breadcrumb" class="content-header"></div>
+
+        <!-- Main content -->
+        <section id="section" class="content">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <!-- left column -->
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <!-- <button
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#modal-add"
+                    >
+                      <i class="fas fa-plus"></i> Agregar Mercancía
+                    </button> -->
+                    
+
+                    <label
+                      for="fileExcel"
+                      class="btn btn-success"
+                      style="margin-top: 8px; font-weight: lighter"
+                    >
+                      <i class="fas fa-file-excel"></i> Cargar Excel</label
+                    >
+                    <input
+                      type="file"
+                      id="fileExcel"
+                      style="display: none"
+                      onchange="cargarExcel()"
+                    />
+                    <button
+                      class="btn btn-secondary"
+                      onclick="actualilzarInventario()"
+                    >
+                      <i class="fa fa-retweet"></i> Actualizar Inventario
+                    </button>
+
+                    <button
+                      class="btn btn-secondary"
+                      onclick="verInventario()"
+                      data-toggle="modal"
+                      data-target="#modal-Ver-Inventario"
+                    >
+                      <i class="fas fa-eye"></i> Ver Inventario
+                    </button>
+
+                    <button
+                      class="btn btn-info"
+                      onclick="verOrdenesEntrada()"
+                      data-toggle="modal"
+                      data-target="#modal-Ver-OrdenesEntrada"
+                    >
+                      Ordenes de Entrada
+                    </button>
+                    <button type="button" id="btn-filter-sin-sku" class="btn btn-danger" onclick="publicacionesSinSKUEnMercancia();">Publicaciones con SKU no registrado</button>
+                    <input type="hidden" id="consecutivo" />
+
+                    <div id="inventarioLocal"></div>
+                  </div>
+
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>Orden de compra</label>
+                          <select
+                            class="form-control select2"
+                            id="listOrdenesCompra"
+                            required
+                          ></select>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>Categoria</label>
+                          <select
+                            class="form-control select2"
+                            id="listCategorias"
+                            required
+                            onchange="selectProducto(this.value, 1)"
+                          ></select>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>Producto</label>
+                          <select
+                            class="form-control select2"
+                            id="listProductos"
+                            onchange="selectVariacion(this.value)"
+                            required
+                          ></select>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>Variacion</label>
+                          <select
+                            class="form-control select2"
+                            id="listVariacion"
+                            required
+                          ></select>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>Cantidad Disponible</label>
+                          <select
+                            class="form-control"
+                            id="listCantidad"
+                            required
+                          >
+                            <option value="all">Cualquier Cantidad</option>
+                            <option value="1">Con cantidades</option>
+                            <option value="0">SIN Cantidades</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>SKU</label>
+                          <input
+                            class="form-control"
+                            id="busquedaSku"
+                          ></input>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label>SKU ML</label>
+                          <input
+                            class="form-control"
+                            id="busquedaSkuMl"
+                          ></input>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          onclick="buscarMercancia()"
+                        >
+                          Buscar Mercancía
+                        </button>
+                      </div>
+                      <div id="btnImprimirEtiquetas" class="col-4 text-center"></div>
+                    </div>
+                  </div>
+
+                  <!-- /.card-header -->
+                  <div id="tblMercancia" class="card-body"></div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <div id="qrDiv" style="width: 10px; height: 10px; overflow: hidden"></div>
+
+      <footer id="footer" class="main-footer"></footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- modal -->
+    <div class="modal fade" id="modal-add">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Mercancía</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-primary">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Agregar Mercancía
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmMercanciaAdd" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-info"
+                          >
+                            <div class="row">
+                              <div class="col-6">
+                                <div class="form-group">
+                                  <label>Numero de Orden de Compra</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="numero_orden_compra"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Categoria</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="categoria"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Producto</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="producto"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Variación</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="variacion"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Proveedor</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="proveedor"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Identificador de Pieza</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="identificador_pieza"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Codigo Proveedor</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="codigoProveedor"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+
+                              <div class="col-6">
+                                <div class="form-group">
+                                  <label>Unidad de Medida</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="medida_fisica"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Cantidad (Bultos)</label>
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="cantidad"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Kg/Mts/Pz</label>
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="unidades_compradas"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Ubicacion</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="ubicacion"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Sub-Ubicacion</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="sub_ubicacion"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <label>Numero de Pedimento</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="numeroPedimento"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="form-group">
+                                  <label>Comentarios</label>
+                                  <textarea
+                                    rows="1"
+                                    cols="50"
+                                    class="form-control"
+                                    id="comentarios"
+                                  ></textarea>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="form-group">
+                                  <label>Foto</label>
+                                  <input
+                                    type="file"
+                                    class="form-control"
+                                    id="foto"
+                                    onchange="mostrarImagen(this)"
+                                  />
+                                  <img
+                                    id="imgFotoMercancia"
+                                    width="150"
+                                    height="150"
+                                    style="
+                                      border: 1px solid #333333;
+                                      margin-top: 10px;
+                                    "
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="agregarRegistro()"
+            >
+              Agregar Mercancía
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-add -->
+
+    <!-- modal-edit -->
+    <div class="modal fade" id="modal-edit">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Mercancía</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Editar Mercancía
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmMercanciaEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-warning"
+                          >
+                            <div class="form-group">
+                              <label>SKU: <span id="sku_edit"></span></label>
+                            </div>
+                            <div class="row">
+                              <div class="col-12">
+                                <table class="table">
+                                  <tr>
+                                    <td><label>Categoría:</label></td>
+                                    <td><label>Producto:</label></td>
+                                    <td><label>Variación:</label></td>
+                                  </tr>
+                                  <tr>
+                                    <td><p id="categoria_edit"></p></td>
+                                    <td><p id="producto_edit"></p></td>
+                                    <td><p id="variacion_edit"></p></td>
+                                  </tr>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>SKU ML</label>
+                              <select
+                                class="form-control js-example-basic-multiple"
+                                id="skuML_edit"
+                                multiple="multiple"
+                              ></select>
+                            </div>
+                            <div class="form-group">
+                              <label>Ubicacion</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="ubicacion_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Sub-Ubicacion</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="sub_ubicacion_edit"
+                                placeholder=""
+                              />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Comentarios</label>
+                              <textarea
+                                rows="1"
+                                cols="50"
+                                class="form-control"
+                                id="comentarios_edit"
+                              ></textarea>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Numero de Pedimento</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="numeroPedimento_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Codigo Proveedor</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="codigoProveedor_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Cantidad Comprada (Bultos)</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="cantidad_comprada_edit"
+                                placeholder=""
+                                oninput="onChangeCantidad(this.value)"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Cantidad Disponible (Bultos)</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="cantidad_disponible_edit"
+                                disabled
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Kg/Mts/Pza</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="unidades_compradas_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>URL Imagen</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="urlImagen_edit"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="archivo">Archivo</label>
+                              <input type="file" id="archivo" name="archivo" class="form-control" onchange="uploadFile('archivo')">
+                            </div>
+                            <div id="divCostoUnitario" class="form-group" style="display: none;">
+                              <label>Costo Unitario</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="costo_unitario_edit"
+                                placeholder=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit" />
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="editarRegistro()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-edit -->
+
+    <!-- modal-edit -->
+    <div class="modal fade" id="modal-editOpciones">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Mercancía</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Editar Mercancía
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmMercanciaEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-warning"
+                          >
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="opcionesCheckbox"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexCheckDefault"
+                              >
+                                Permitir Editar/Borrar la mercancian de la orden
+                                <span
+                                  style="font-weight: bold"
+                                  id="labelMsj"
+                                ></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit" />
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="editarOpcionesOrden()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-edit -->
+
+    <!-- modal-edit-multiple -->
+    <div class="modal fade" id="modal-edit-multiple">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Mercancía</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Editar Multiple Mercancía
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmMercanciaEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-warning"
+                          >
+                            <div class="form-group">
+                              <label>Categoria</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="categoria_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Producto</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="producto_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Variacion</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="variacion_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Ubicacion</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="ubicacion_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Sub-Ubicacion</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="sub_ubicacion_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Comentarios</label>
+                              <textarea
+                                rows="1"
+                                cols="50"
+                                class="form-control"
+                                id="comentarios_edit_multiple"
+                              ></textarea>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Numero de Pedimento</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="numeroPedimento_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Proveedor</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Proveedor_edit_multiple"
+                                placeholder=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit_multiple" />
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="actualizarMultiple()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-edit-multiple -->
+    <!-- modal-ver inventario-->
+    <div class="modal fade" id="modal-Ver-Inventario">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Inventario</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-12">
+              <table
+                class="table table-striped table-bordered"
+                id="inventarioTable"
+              >
+                <tfoot>
+                  <tr>
+                    <th class="filterhead">Categoría</th>
+                    <th class="filterhead">Producto</th>
+                    <th class="filterhead">Variación</th>
+                    <th class="filterhead">&nbsp;</th>
+                    <th class="filterhead">&nbsp;</th>
+                  </tr>
+                </tfoot>
+                <thead>
+                  <tr>
+                    <th>Categoría</th>
+                    <th>Producto</th>
+                    <th>Variación</th>
+                    <th>Cantidad (Bultos) Disponible</th>
+                    <th>Cantidad Solicitada en Venta</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <!-- <iframe src="/InventarioFrame.html" height="500px" width="100%"  style="border:none;"  title="description"></iframe> -->
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-ver inventario -->
+
+    <!-- modal-edit-multiple -->
+    <div class="modal fade" id="modal-SumarMercancia">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <!-- left column -->
+                  <div class="col-12">
+                    <!-- general form elements -->
+                    <div id="card-bg-title" class="card card-warning">
+                      <div class="card-header">
+                        <h3 id="card-title" class="card-title">
+                          Agregar Mercancía
+                        </h3>
+                      </div>
+                      <!-- /.card-header -->
+
+                      <!-- form start -->
+                      <form id="frmMercanciaEdit" autocomplete="off">
+                        <div class="card-body">
+                          <div
+                            id="callout-bg-form"
+                            class="callout callout-warning"
+                          >
+                            <div class="form-group">
+                              <label>Cantidad a ingresar</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="CantidadIngresar_SumarMercancia"
+                                placeholder=""
+                              />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Orden de Compra </label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="OrdenCompra_SumarMercancia"
+                                placeholder=""
+                              />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Numero de Pedimento</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="numeroPedimento_SumarMercancia"
+                                placeholder=""
+                              />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Comentarios</label>
+                              <textarea
+                                rows="1"
+                                cols="50"
+                                class="form-control"
+                                id="comentarios_SumarMercancia"
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <input type="hidden" id="id_edit_multiple" />
+                      </form>
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="onSumarMercancia()"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-SumarMercancia -->
+
+    <!-- modal-detalle -->
+    <div class="modal fade" id="modal-detalle">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Detalle Mercancia</h4>
+          </div>
+          <div class="modal-body">
+            <div id="divtblResumen" class="card-body"></div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-detalle -->
+
+    <!-- modal-ver OrdenesEntrada-->
+    <div class="modal fade" id="modal-Ver-OrdenesEntrada">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Ordenes de Entrada</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-12">
+              <table
+                class="table table-striped table-bordered"
+                id="inventarioOrdenesEntrada"
+              >
+                <thead>
+                  <tr>
+                    <th class="filterhead">Usuario</th>
+                    <th class="filterhead">Fecha</th>
+                    <th class="filterhead">OC</th>
+                    <th class="filterhead">URL</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <!-- <iframe src="/InventarioFrame.html" height="500px" width="100%"  style="border:none;"  title="description"></iframe> -->
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <!-- /.modal-ver OrdenesEntrada -->
+    <div id="idIndexCantidad" hidden></div>
+    <div id="idIndexCantidadQR" hidden></div>
+
+
+    <!-- modal-imprimir-etiquetas -->
+    <div class="modal fade" id="modal-imprimir-etiquetas">
+      <div class="modal-dialog modal-xl" style="max-width: 90%;">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Imprimir etiquetas</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div id="resultImprimirEtiquetas" class="col-12"></div>
+          </div>
+
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+
+            <button type="button" class="btn btn-warning" onclick="imprimirEtiquetasModal()">
+              <i class="fas fa-qrcode"></i> Imprimir Etiquetas
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+      <!-- modal Sin SKU -->
+  <div class="modal fade" id="modal-sin-sku">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Publicaciones de MercadoLibre sin SKU registrado en Mercancia</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div id="resultSinSkus" class="col-12">
+              
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- modal Sin SKU -->
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <!-- Firebase - Custom -->
+    <script src="estilos.js"></script>
+    <script src="firebase.js"></script>
+    <script src="verifyAuth.js"></script>
+    <script src="logsCustom.js"></script>
+    <script src="index.js"></script>
+    
+
+    <!-- Bootstrap -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <script src="plugins/datatables-select/js/select.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/jszip/jszip.min.js"></script>
+    <script src="plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="public/js/adminlte.js"></script>
+    <!-- AdminLTE -->
+    <script  src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Excel -->
+    <script type="text/javascript" src="public/js/xlsx.full.min.js"></script>
+    <!-- QR -->
+    <script type="text/javascript" src="public/js/qrious.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
+     <!-- Select2 -->
+     <script src="plugins/select2/js/select2.min.js"></script>
+     <script src="generalTools.js"></script>
+     <script src="mercancia.js"></script>
+     
+  </body>
+</html>

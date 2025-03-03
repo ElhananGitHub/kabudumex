@@ -1,0 +1,919 @@
+[
+    {
+        "code": 200,
+        "body": {
+            "id": "MLM1312284961",
+            "site_id": "MLM",
+            "title": "Cubrebocas Infantil Tapabocas Tricapa Termosellado",
+            "subtitle": null,
+            "seller_id": 642273229,
+            "category_id": "MLM178498",
+            "user_product_id": null,
+            "official_store_id": 4987,
+            "price": 87,
+            "base_price": 87,
+            "original_price": null,
+            "inventory_id": null,
+            "currency_id": "MXN",
+            "initial_quantity": 18798,
+            "available_quantity": 0,
+            "sold_quantity": 18798,
+            "sale_terms": [
+                {
+                    "id": "WARRANTY_TIME",
+                    "name": "Tiempo de garantía",
+                    "value_id": null,
+                    "value_name": "7 días",
+                    "value_struct": {
+                        "number": 7,
+                        "unit": "días"
+                    },
+                    "values": [
+                        {
+                            "id": null,
+                            "name": "7 días",
+                            "struct": {
+                                "number": 7,
+                                "unit": "días"
+                            }
+                        }
+                    ],
+                    "value_type": "number_unit"
+                },
+                {
+                    "id": "WARRANTY_TYPE",
+                    "name": "Tipo de garantía",
+                    "value_id": "2230280",
+                    "value_name": "Garantía del vendedor",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "2230280",
+                            "name": "Garantía del vendedor",
+                            "struct": null
+                        }
+                    ],
+                    "value_type": "list"
+                }
+            ],
+            "buying_mode": "buy_it_now",
+            "listing_type_id": "gold_special",
+            "start_time": "2021-09-17T22:36:47.000Z",
+            "stop_time": "2041-09-12T04:00:00.000Z",
+            "end_time": "2041-09-12T04:00:00.000Z",
+            "expiration_time": "2023-10-01T12:13:44.000Z",
+            "condition": "new",
+            "permalink": "https://articulo.mercadolibre.com.mx/MLM-1312284961-cubrebocas-infantil-tapabocas-tricapa-termosellado-_JM",
+            "thumbnail_id": "828875-MLM51478062853_092022",
+            "thumbnail": "http://http2.mlstatic.com/D_828875-MLM51478062853_092022-I.jpg",
+            "secure_thumbnail": "https://http2.mlstatic.com/D_828875-MLM51478062853_092022-I.jpg",
+            "pictures": [
+                {
+                    "id": "828875-MLM51478062853_092022",
+                    "url": "http://http2.mlstatic.com/D_828875-MLM51478062853_092022-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_828875-MLM51478062853_092022-O.jpg",
+                    "size": "500x446",
+                    "max_size": "1280x1144",
+                    "quality": ""
+                },
+                {
+                    "id": "791333-MLM49449042372_032022",
+                    "url": "http://http2.mlstatic.com/D_791333-MLM49449042372_032022-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_791333-MLM49449042372_032022-O.jpg",
+                    "size": "500x499",
+                    "max_size": "1200x1199",
+                    "quality": ""
+                },
+                {
+                    "id": "978824-MLM49449138011_032022",
+                    "url": "http://http2.mlstatic.com/D_978824-MLM49449138011_032022-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_978824-MLM49449138011_032022-O.jpg",
+                    "size": "499x500",
+                    "max_size": "1282x1283",
+                    "quality": ""
+                },
+                {
+                    "id": "714174-MLM49449112086_032022",
+                    "url": "http://http2.mlstatic.com/D_714174-MLM49449112086_032022-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_714174-MLM49449112086_032022-O.jpg",
+                    "size": "500x499",
+                    "max_size": "1200x1199",
+                    "quality": ""
+                },
+                {
+                    "id": "854365-MLM49449012476_032022",
+                    "url": "http://http2.mlstatic.com/D_854365-MLM49449012476_032022-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_854365-MLM49449012476_032022-O.jpg",
+                    "size": "500x485",
+                    "max_size": "1268x1230",
+                    "quality": ""
+                },
+                {
+                    "id": "762997-MLM48072974195_102021",
+                    "url": "http://http2.mlstatic.com/D_762997-MLM48072974195_102021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_762997-MLM48072974195_102021-O.jpg",
+                    "size": "500x448",
+                    "max_size": "617x554",
+                    "quality": ""
+                },
+                {
+                    "id": "690406-MLM48072981518_102021",
+                    "url": "http://http2.mlstatic.com/D_690406-MLM48072981518_102021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_690406-MLM48072981518_102021-O.jpg",
+                    "size": "500x316",
+                    "max_size": "985x623",
+                    "quality": ""
+                },
+                {
+                    "id": "900056-MLM47668387906_092021",
+                    "url": "http://http2.mlstatic.com/D_900056-MLM47668387906_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_900056-MLM47668387906_092021-O.jpg",
+                    "size": "500x499",
+                    "max_size": "1200x1199",
+                    "quality": ""
+                },
+                {
+                    "id": "628132-MLM47668442640_092021",
+                    "url": "http://http2.mlstatic.com/D_628132-MLM47668442640_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_628132-MLM47668442640_092021-O.jpg",
+                    "size": "499x500",
+                    "max_size": "1282x1283",
+                    "quality": ""
+                },
+                {
+                    "id": "608982-MLM47668442642_092021",
+                    "url": "http://http2.mlstatic.com/D_608982-MLM47668442642_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_608982-MLM47668442642_092021-O.jpg",
+                    "size": "500x485",
+                    "max_size": "1268x1232",
+                    "quality": ""
+                },
+                {
+                    "id": "839207-MLM47668426702_092021",
+                    "url": "http://http2.mlstatic.com/D_839207-MLM47668426702_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_839207-MLM47668426702_092021-O.jpg",
+                    "size": "500x499",
+                    "max_size": "1200x1199",
+                    "quality": ""
+                },
+                {
+                    "id": "762761-MLM49111553864_022022",
+                    "url": "http://http2.mlstatic.com/D_762761-MLM49111553864_022022-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_762761-MLM49111553864_022022-O.jpg",
+                    "size": "500x448",
+                    "max_size": "1275x1144",
+                    "quality": ""
+                },
+                {
+                    "id": "730963-MLM47547040150_092021",
+                    "url": "http://http2.mlstatic.com/D_730963-MLM47547040150_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_730963-MLM47547040150_092021-O.jpg",
+                    "size": "500x499",
+                    "max_size": "1200x1199",
+                    "quality": ""
+                },
+                {
+                    "id": "612610-MLM47546929564_092021",
+                    "url": "http://http2.mlstatic.com/D_612610-MLM47546929564_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_612610-MLM47546929564_092021-O.jpg",
+                    "size": "499x500",
+                    "max_size": "1282x1283",
+                    "quality": ""
+                },
+                {
+                    "id": "828831-MLM47546880795_092021",
+                    "url": "http://http2.mlstatic.com/D_828831-MLM47546880795_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_828831-MLM47546880795_092021-O.jpg",
+                    "size": "500x499",
+                    "max_size": "1200x1199",
+                    "quality": ""
+                },
+                {
+                    "id": "692089-MLM47546986401_092021",
+                    "url": "http://http2.mlstatic.com/D_692089-MLM47546986401_092021-O.jpg",
+                    "secure_url": "https://http2.mlstatic.com/D_692089-MLM47546986401_092021-O.jpg",
+                    "size": "500x473",
+                    "max_size": "1302x1232",
+                    "quality": ""
+                }
+            ],
+            "video_id": null,
+            "descriptions": [],
+            "accepts_mercadopago": true,
+            "non_mercado_pago_payment_methods": [],
+            "shipping": {
+                "mode": "me2",
+                "methods": [],
+                "tags": [],
+                "dimensions": null,
+                "local_pick_up": false,
+                "free_shipping": false,
+                "logistic_type": "fulfillment",
+                "store_pick_up": false
+            },
+            "international_delivery_mode": "none",
+            "seller_address": {
+                "comment": "B Referencia: B",
+                "address_line": "Avenida de la Industria 12",
+                "zip_code": "54610",
+                "city": {
+                    "id": "TUxNQ1RFUDk4OTE",
+                    "name": "Tepotzotlan"
+                },
+                "state": {
+                    "id": "MX-MEX",
+                    "name": "Estado De México"
+                },
+                "country": {
+                    "id": "MX",
+                    "name": "Mexico"
+                },
+                "search_location": {
+                    "city": {
+                        "id": "TUxNQ1RFUDk4OTE",
+                        "name": "Tepotzotlan"
+                    },
+                    "state": {
+                        "id": "TUxNUEVTVDMzMzc",
+                        "name": "Estado De México"
+                    }
+                },
+                "latitude": 19.722987268529067,
+                "longitude": -99.20802299552308,
+                "id": 1287262086
+            },
+            "seller_contact": null,
+            "location": {},
+            "geolocation": {
+                "latitude": 19.722987268529067,
+                "longitude": -99.20802299552308
+            },
+            "coverage_areas": [],
+            "attributes": [
+                {
+                    "id": "BRAND",
+                    "name": "Marca",
+                    "value_id": null,
+                    "value_name": "tapabocas",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": null,
+                            "name": "tapabocas",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "string"
+                },
+                {
+                    "id": "IS_DISPOSABLE",
+                    "name": "Es descartable",
+                    "value_id": "242085",
+                    "value_name": "Sí",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "242085",
+                            "name": "Sí",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "boolean"
+                },
+                {
+                    "id": "IS_INDUSTRIAL",
+                    "name": "Es industrial",
+                    "value_id": "242084",
+                    "value_name": "No",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "242084",
+                            "name": "No",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "boolean"
+                },
+                {
+                    "id": "ITEM_CONDITION",
+                    "name": "Condición del ítem",
+                    "value_id": "2230284",
+                    "value_name": "Nuevo",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "2230284",
+                            "name": "Nuevo",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "list"
+                },
+                {
+                    "id": "MASK_GRIP_TYPE",
+                    "name": "Tipo de agarre",
+                    "value_id": "2528345",
+                    "value_name": "Elástico",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "2528345",
+                            "name": "Elástico",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "string"
+                },
+                {
+                    "id": "MATERIAL",
+                    "name": "Material",
+                    "value_id": null,
+                    "value_name": "NON-WOVEN FABRIC",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": null,
+                            "name": "NON-WOVEN FABRIC",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "string"
+                },
+                {
+                    "id": "MODEL",
+                    "name": "Modelo",
+                    "value_id": null,
+                    "value_name": "TRICAPA TERMOSELLADO",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": null,
+                            "name": "TRICAPA TERMOSELLADO",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "string"
+                },
+                {
+                    "id": "PRODUCT_FEATURES",
+                    "name": "Características del producto",
+                    "value_id": null,
+                    "value_name": "Con vencimiento,Dispositivo de salud",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "7435888",
+                            "name": "Con vencimiento",
+                            "struct": null
+                        },
+                        {
+                            "id": "7575925",
+                            "name": "Dispositivo de salud",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "list"
+                },
+                {
+                    "id": "SHIPMENT_PACKING",
+                    "name": "Embalaje del envío",
+                    "value_id": "7435891",
+                    "value_name": "Bolsa",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "7435891",
+                            "name": "Bolsa",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "list"
+                },
+                {
+                    "id": "UNITS_PER_PACKAGE",
+                    "name": "Unidades por envase",
+                    "value_id": null,
+                    "value_name": "50",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": null,
+                            "name": "50",
+                            "struct": null
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "value_type": "number"
+                }
+            ],
+            "warnings": [],
+            "listing_source": "",
+            "variations": [
+                {
+                    "id": 174129671503,
+                    "price": 87,
+                    "attribute_combinations": [
+                        {
+                            "id": "COLOR",
+                            "name": "Color",
+                            "value_id": null,
+                            "value_name": "Lila Infantil",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "Lila Infantil",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        }
+                    ],
+                    "available_quantity": 0,
+                    "sold_quantity": 1430,
+                    "sale_terms": [],
+                    "picture_ids": [
+                        "828875-MLM51478062853_092022",
+                        "791333-MLM49449042372_032022",
+                        "978824-MLM49449138011_032022",
+                        "714174-MLM49449112086_032022",
+                        "854365-MLM49449012476_032022"
+                    ],
+                    "seller_custom_field": null,
+                    "catalog_product_id": null,
+                    "attributes": [
+                        {
+                            "id": "PACKAGE_HEIGHT",
+                            "name": "Altura del paquete",
+                            "value_id": null,
+                            "value_name": "8.4 cm",
+                            "value_struct": {
+                                "number": 8.4,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "8.4 cm",
+                                    "struct": {
+                                        "number": 8.4,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "PACKAGE_WIDTH",
+                            "name": "Ancho del paquete",
+                            "value_id": null,
+                            "value_name": "24.8 cm",
+                            "value_struct": {
+                                "number": 24.8,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "24.8 cm",
+                                    "struct": {
+                                        "number": 24.8,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "GTIN",
+                            "name": "Código universal de producto",
+                            "value_id": null,
+                            "value_name": "6973118750027",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "6973118750027",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        },
+                        {
+                            "id": "PACKAGE_LENGTH",
+                            "name": "Largo del paquete",
+                            "value_id": null,
+                            "value_name": "30 cm",
+                            "value_struct": {
+                                "number": 30,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "30 cm",
+                                    "struct": {
+                                        "number": 30,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "PACKAGE_WEIGHT",
+                            "name": "Peso del paquete",
+                            "value_id": null,
+                            "value_name": "580 g",
+                            "value_struct": {
+                                "number": 580,
+                                "unit": "g"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "580 g",
+                                    "struct": {
+                                        "number": 580,
+                                        "unit": "g"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "SELLER_SKU",
+                            "name": "SKU",
+                            "value_id": null,
+                            "value_name": "TTPAZUL200INFANTLILA",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "TTPAZUL200INFANTLILA",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        }
+                    ],
+                    "inventory_id": "OLCT62017",
+                    "item_relations": [],
+                    "user_product_id": null
+                },
+                {
+                    "id": 173728407300,
+                    "price": 87,
+                    "attribute_combinations": [
+                        {
+                            "id": "COLOR",
+                            "name": "Color",
+                            "value_id": null,
+                            "value_name": "Rosa Infantil",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "Rosa Infantil",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        }
+                    ],
+                    "available_quantity": 0,
+                    "sold_quantity": 4884,
+                    "sale_terms": [],
+                    "picture_ids": [
+                        "762997-MLM48072974195_102021",
+                        "690406-MLM48072981518_102021",
+                        "900056-MLM47668387906_092021",
+                        "628132-MLM47668442640_092021",
+                        "608982-MLM47668442642_092021",
+                        "839207-MLM47668426702_092021"
+                    ],
+                    "seller_custom_field": null,
+                    "catalog_product_id": null,
+                    "attributes": [
+                        {
+                            "id": "PACKAGE_HEIGHT",
+                            "name": "Altura del paquete",
+                            "value_id": null,
+                            "value_name": "16 cm",
+                            "value_struct": {
+                                "number": 16,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "16 cm",
+                                    "struct": {
+                                        "number": 16,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "PACKAGE_WIDTH",
+                            "name": "Ancho del paquete",
+                            "value_id": null,
+                            "value_name": "15.6 cm",
+                            "value_struct": {
+                                "number": 15.6,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "15.6 cm",
+                                    "struct": {
+                                        "number": 15.6,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "GTIN",
+                            "name": "Código universal de producto",
+                            "value_id": "-1",
+                            "value_name": null,
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": "-1",
+                                    "name": null,
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        },
+                        {
+                            "id": "PACKAGE_LENGTH",
+                            "name": "Largo del paquete",
+                            "value_id": null,
+                            "value_name": "20.6 cm",
+                            "value_struct": {
+                                "number": 20.6,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "20.6 cm",
+                                    "struct": {
+                                        "number": 20.6,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "PACKAGE_WEIGHT",
+                            "name": "Peso del paquete",
+                            "value_id": null,
+                            "value_name": "520 g",
+                            "value_struct": {
+                                "number": 520,
+                                "unit": "g"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "520 g",
+                                    "struct": {
+                                        "number": 520,
+                                        "unit": "g"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "SELLER_SKU",
+                            "name": "SKU",
+                            "value_id": null,
+                            "value_name": "TTPROSA200INFANTROSA",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "TTPROSA200INFANTROSA",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        }
+                    ],
+                    "inventory_id": "GGQP16202",
+                    "item_relations": [],
+                    "user_product_id": null
+                },
+                {
+                    "id": 173671442702,
+                    "price": 87,
+                    "attribute_combinations": [
+                        {
+                            "id": "COLOR",
+                            "name": "Color",
+                            "value_id": null,
+                            "value_name": "Azul Infantil",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "Azul Infantil",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        }
+                    ],
+                    "available_quantity": 0,
+                    "sold_quantity": 12484,
+                    "sale_terms": [],
+                    "picture_ids": [
+                        "762761-MLM49111553864_022022",
+                        "730963-MLM47547040150_092021",
+                        "612610-MLM47546929564_092021",
+                        "828831-MLM47546880795_092021",
+                        "692089-MLM47546986401_092021"
+                    ],
+                    "seller_custom_field": null,
+                    "catalog_product_id": null,
+                    "attributes": [
+                        {
+                            "id": "PACKAGE_HEIGHT",
+                            "name": "Altura del paquete",
+                            "value_id": null,
+                            "value_name": "14.8 cm",
+                            "value_struct": {
+                                "number": 14.8,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "14.8 cm",
+                                    "struct": {
+                                        "number": 14.8,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "PACKAGE_WIDTH",
+                            "name": "Ancho del paquete",
+                            "value_id": null,
+                            "value_name": "16.6 cm",
+                            "value_struct": {
+                                "number": 16.6,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "16.6 cm",
+                                    "struct": {
+                                        "number": 16.6,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "GTIN",
+                            "name": "Código universal de producto",
+                            "value_id": "-1",
+                            "value_name": null,
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": "-1",
+                                    "name": null,
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        },
+                        {
+                            "id": "PACKAGE_LENGTH",
+                            "name": "Largo del paquete",
+                            "value_id": null,
+                            "value_name": "21 cm",
+                            "value_struct": {
+                                "number": 21,
+                                "unit": "cm"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "21 cm",
+                                    "struct": {
+                                        "number": 21,
+                                        "unit": "cm"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "PACKAGE_WEIGHT",
+                            "name": "Peso del paquete",
+                            "value_id": null,
+                            "value_name": "560 g",
+                            "value_struct": {
+                                "number": 560,
+                                "unit": "g"
+                            },
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "560 g",
+                                    "struct": {
+                                        "number": 560,
+                                        "unit": "g"
+                                    }
+                                }
+                            ],
+                            "value_type": "number_unit"
+                        },
+                        {
+                            "id": "SELLER_SKU",
+                            "name": "SKU",
+                            "value_id": null,
+                            "value_name": "TTPAZUL200INFANTAZUL",
+                            "value_struct": null,
+                            "values": [
+                                {
+                                    "id": null,
+                                    "name": "TTPAZUL200INFANTAZUL",
+                                    "struct": null
+                                }
+                            ],
+                            "value_type": "string"
+                        }
+                    ],
+                    "inventory_id": "DGLV12132",
+                    "item_relations": [],
+                    "user_product_id": null
+                }
+            ],
+            "status": "paused",
+            "sub_status": [
+                "out_of_stock"
+            ],
+            "tags": [
+                "loyalty_discount_eligible",
+                "good_quality_picture",
+                "immediate_payment",
+                "cart_eligible"
+            ],
+            "warranty": "Garantía del vendedor: 7 días",
+            "catalog_product_id": null,
+            "domain_id": "MLM-SURGICAL_AND_INDUSTRIAL_MASKS",
+            "seller_custom_field": null,
+            "parent_item_id": null,
+            "differential_pricing": null,
+            "deal_ids": [],
+            "automatic_relist": false,
+            "date_created": "2021-09-17T22:36:47.000Z",
+            "last_updated": "2023-03-15T12:13:44.000Z",
+            "health": 0.66,
+            "catalog_listing": false,
+            "item_relations": [],
+            "channels": [
+                "marketplace",
+                "mshops"
+            ]
+        }
+    }
+]

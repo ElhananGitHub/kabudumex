@@ -1,0 +1,1358 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,800&amp;display=swap" rel="stylesheet">
+    <!--
+        <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+        <script>window.LogRocket && window.LogRocket.init('uiqtcg/ml-selfbilling');</script>
+    -->
+    <style type="text/css">
+    h1,h2,h3,h4,h5,p{margin:0px}h1{font-size:2.25em}h2{font-size:1.75em;font-weight:500}button{border:none;padding:1em 1.75em;outline:none;color:inherit;font-size:1em;cursor:pointer;background:white}button:hover{box-shadow:1px 1px 3px 0px rgba(0,0,0,0.329)}button:hover:active{background:#f1f1f1;box-shadow:1px 1px 1px 0px rgba(0,0,0,0.129)}button:active{background:#f1f1f1;box-shadow:1px 1px 1px 0px rgba(0,0,0,0.129)}button.primary{background:#5a76a0;color:white;font-weight:600}button.primary:hover{box-shadow:1px 1px 4px 0px rgba(0,0,0,0.329)}button.primary:hover:active{background:#614a86;box-shadow:1px 1px 1px 0px rgba(0,0,0,0.129)}button.primary:active{background:#614a86;box-shadow:1px 1px 1px 0px rgba(0,0,0,0.129)}button.primary.warning{background:#de5959}button[disabled]{background:#acacac !important;color:#5a5a5a;box-shadow:none !important}input,select{outline:none;border:solid 1px #e9e9e9;font-size:1em;padding:0.5em;color:inherit}input:focus,select:focus{border:solid 1px rgba(124,171,198,0.612)}input._error,select._error{border-color:#f73356}input._error:focus,select._error:focus{border:solid 1px rgba(124,171,198,0.612)}input[disabled],select[disabled]{opacity:0.35}input:disabled,select:disabled{opacity:0.35}select{height:33px;width:100%;background:white;border-radius:0px;appearance:none;-webkit-appearance:none;-moz-appearance:none;background-position:right 50%;background-repeat:no-repeat;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=)}p.center{text-align:center}div.row{display:grid}div.card,form.card{padding:1em 1em 1em;border-radius:8px;box-shadow:1px 1px 3px 0px rgba(0,0,0,0.329);background:white}div.labelValue{display:grid;row-gap:0.25em;padding:8px 0px}div.labelValue p{font-size:1em;font-weight:400}div.labelValue p.label{font-size:0.85em;font-weight:600}div#UPDATE_REGIMEN{display:none;position:fixed;width:100vw;height:100vh;top:0px;left:0px}div#UPDATE_REGIMEN.active{display:grid;animation-name:displayDialog;animation-duration:300ms;animation-iteration-count:1;animation-timing-function:ease-in-out}div#UPDATE_REGIMEN div.overlay{width:100vw;height:100vh;top:0px;left:0px;position:absolute;z-index:1;backdrop-filter:blur(3px)}div#UPDATE_REGIMEN div.card{z-index:2;position:relative;align-self:center;justify-self:center;padding:1rem 1rem 1rem;display:grid;background-color:white;border-radius:10px;width:350px;max-width:98vw;row-gap:1rem;box-shadow:3px 4px 15px rgba(170,170,208,0.25)}div#UPDATE_REGIMEN div.card div.input{display:grid}div#UPDATE_REGIMEN div.card div.input label{font-size:0.85em;font-weight:600;opacity:0.85}div#UPDATE_REGIMEN div.card p{color:#f57d00}div#UPDATE_REGIMEN div.card div.actions{display:grid}body{background:#eaf3ff;font-size:14px;font-family:Roboto;display:block;min-height:100vh;width:100vw;padding:0px;margin:0px;color:#3a3d57}body div#CONTAINER{padding:2em 0px 0px;max-width:90vw;margin:0px auto;display:grid;min-height:calc(100vh - 4em);grid-template-rows:102px 1fr}body div#CONTAINER>div:not(#BD){justify-self:center;align-self:center;pointer-events:none;opacity:0;grid-row:2/3;grid-column:1/2;position:relative;padding:34px 0px}body div#CONTAINER>div:not(#BD)[__current]{opacity:1;pointer-events:unset}body div#CONTAINER>div:not(#BD)>div.sectionTitle{position:absolute;top:0.25em;left:0em;display:grid}body div#CONTAINER div#BD{display:grid;grid-template-columns:300px 1fr;border-bottom:solid 1px rgba(198,209,224,0.64)}body div#CONTAINER div#BD p#BD_presentation{text-align:left;align-self:center}body div#CONTAINER div#BD h1,body div#CONTAINER div#BD h2{text-align:right}body div#CONTAINER div#BD>div{align-self:start}body div#CONTAINER div#BD div.together{align-self:start;padding-top:0.25em}body div#CONTAINER div#BD div.together>p{align-self:center}body div#CONTAINER div#SelectRfc{display:grid;min-width:450px;row-gap:1em}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing{display:grid;row-gap:0.5em}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing div._receptorWrap{display:grid;grid-template-columns:1fr 50px}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing div._receptor{display:grid;cursor:pointer}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing div._receptor:hover{background:#f1f1f1}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing div._delete{display:grid;cursor:pointer}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing div._delete svg{align-self:center;justify-self:center;fill:rgba(255,48,114,0.783)}body div#CONTAINER div#SelectRfc div#SelectRfc_cardListing div._delete:hover svg{fill:#ff3072}body div#CONTAINER div#SelectRfc div.actions{display:grid}body div#CONTAINER div#NRFC{display:grid;row-gap:0.25em;min-width:450px}body div#CONTAINER div#NRFC>p{font-weight:500}body div#CONTAINER div#NRFC div.form,body div#CONTAINER div#NRFC form.form{display:grid;row-gap:1em;margin-bottom:1em}body div#CONTAINER div#NRFC div.form div.input,body div#CONTAINER div#NRFC form.form div.input{display:grid}body div#CONTAINER div#NRFC div.form div.input label,body div#CONTAINER div#NRFC form.form div.input label{font-size:0.85em;font-weight:600;opacity:0.85}body div#CONTAINER div#NRFC p#NRFC_ERROR{color:#f57d00;font-weight:500;text-align:center}body div#CONTAINER div#NRFC button{margin:8px 0px}body div#CONTAINER div#CONFIRM_BILL{display:grid;row-gap:1em;min-width:450px;column-gap:10px;max-width:615px;grid-template-columns:1fr 1fr}body div#CONTAINER div#CONFIRM_BILL div._wrapLOGO{background-color:white;border-radius:6px;padding:0.75em;display:grid}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_LOGO_URL{width:calc(100%);height:calc(100%);align-self:center;justify-self:center;background-size:contain;background-repeat:no-repeat;background-color:white;background-position:center}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_CONCEPTOS{grid-column:1/3}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_CONCEPTOS div._conceptos{display:grid;column-gap:0.5em;grid-template-columns:1fr 50px 120px}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_CONCEPTOS div._conceptos p:not(._description){text-align:right}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_TOTAL{display:grid;grid-column:1/3;row-gap:0.5em;justify-self:end}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_TOTAL p{text-align:right;display:grid;grid-template-columns:120px 1fr;column-gap:0.75em;font-size:0.9em}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_TOTAL p.hidden{display:none}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_TOTAL p._subtotal{font-size:1em}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_TOTAL p._total{font-size:1.1em}body div#CONTAINER div#CONFIRM_BILL div.input{display:grid;grid-column:1/3;margin-top:0.25em}body div#CONTAINER div#CONFIRM_BILL div.input label{font-size:0.85em;font-weight:600;opacity:0.85}body div#CONTAINER div#CONFIRM_BILL div.input.checkbox{padding:8px 0px 4px 0px;grid-template-columns:24px 1fr}body div#CONTAINER div#CONFIRM_BILL div.input.checkbox label{line-height:1.5em}body div#CONTAINER div#CONFIRM_BILL>div._divider{grid-column:1/3;border-bottom:solid 1px rgba(128,128,128,0.32)}body div#CONTAINER div#CONFIRM_BILL>button{grid-column:1/3}body div#CONTAINER div#CONFIRM_BILL>button[disabled][stamping]{color:white;background:#89ca28 !important}body div#CONTAINER div#CONFIRM_BILL p#CONFIRM_STAMP_ERR{color:#f57d00;font-weight:500;text-align:center;grid-column:1/3}body div#CONTAINER div#CONFIRM_BILL p#INPUT_USO_WARNING{display:none;color:#f57d00;font-size:0.85rem;position:relative;top:-10px;grid-column:1 / 3}body div#CONTAINER div#CONFIRM_BILL p#INPUT_USO_WARNING.display{display:block}body div#CONTAINER div#STAMPED{display:grid;row-gap:1em;min-width:450px}body div#CONTAINER div#STAMPED div.actions{display:grid;grid-template-columns:1fr 1fr;column-gap:1em;justify-self:end}body div#CONTAINER div#STAMPED div.actions div._hiddenLinks{display:none}body div#CONTAINER div#STAMPED div._canRestamp{margin-top:2em;padding-top:1em;border-top:solid 1px rgba(198,209,224,0.64)}body div#CONTAINER div#STAMPED div._canRestamp p{text-align:center;padding-top:1em;padding-bottom:1em}body div#CONTAINER div#EXPIRED{display:grid;row-gap:1em;min-width:450px}@media all and (max-width: 900px){body div#CONTAINER div#BD{grid-template-columns:1fr}body div#CONTAINER div#BD div.together{grid-template-columns:55px 1fr;grid-row:2/3}body div#CONTAINER div#BD h1{font-size:2em;text-align:left}body div#CONTAINER div#BD h2{font-size:1.5em;text-align:left}}@media all and (max-width: 510px){body div#CONTAINER{max-width:100vw}body div#CONTAINER div#BD h1{font-size:1.5em;text-align:left}body div#CONTAINER div#BD h2{font-size:1.15em;text-align:left}body div#CONTAINER div#SelectRfc,body div#CONTAINER div#NRFC,body div#CONTAINER div#STAMPED{min-width:330px;width:95vw}body div#CONTAINER div#CONFIRM_BILL{min-width:330px;grid-template-columns:165px 1fr}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_CONCEPTOS div._conceptos{grid-template-columns:1fr 105px}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_CONCEPTOS div._conceptos p._description{grid-column:1/3}body div#CONTAINER div#CONFIRM_BILL div#CONFIRM_BILL_CONCEPTOS div._conceptos p._cantidad{text-align:left}body div#CONTAINER div#CONFIRM_BILL div.input.checkbox{grid-template-columns:30px 1fr}body div#CONTAINER div#CONFIRM_BILL div.input.checkbox label{font-size:1em;line-height:26px}body div#CONTAINER div#CONFIRM_BILL div.input.checkbox input[type="checkbox"]{height:20px;width:20px}body div#CONTAINER input,body div#CONTAINER select{padding:0.75em 0.5em}body div#CONTAINER select{height:calc(33px + 1em)}body div#CONTAINER input{height:calc(24px)}body div#CONTAINER div#EXPIRED{min-width:330px;max-width:95vw}body div#CONTAINER div#EXPIRED>div{justify-self:center}}@media all and (max-width: 420px){body div#CONTAINER{max-width:calc(100vw - 8px)}body div#CONTAINER div#SelectRfc,body div#CONTAINER div#NRFC,body div#CONTAINER div#STAMPED{width:calc(100vw - 8px)}body div#CONTAINER div#EXPIRED{min-width:330px;max-width:calc(100vw - 8px)}body div#CONTAINER div#EXPIRED>div{justify-self:center}}@keyframes displayDialog{from{opacity:0}to{opacity:1}}
+
+</style>
+    <script>
+let MlOrder={"id":2000007253973958,"date_created":"2023-12-27T12:29:24.000-04:00","last_updated":"2023-12-27T15:56:29.000-04:00","expiration_date":"2024-01-24T15:54:18.000-04:00","date_closed":"2023-12-27T15:54:18.000-04:00","comment":null,"pack_id":null,"pickup_id":null,"fulfilled":null,"hidden_for_seller":null,"buying_mode":"buy_equals_pay","shipping_cost":0,"application_id":null,"mediations":[],"total_amount":791.12,"paid_amount":791.12,"coupon":{"amount":0,"id":null},"order_items":[{"item":{"id":"MLM2712121084","title":"Escalera De Aluminio Telescopica 4 Escalones Homex Color Blanco","category_id":"MLM31541","variation_id":null,"seller_custom_field":null,"variation_attributes":[],"warranty":"Garantía del vendedor: 14 días","condition":"new","seller_sku":"escalera-4blanca","global_price":null,"net_weight":null},"quantity":1,"requested_quantity":{"value":1,"measure":"unit"},"picked_quantity":null,"unit_price":791.12,"full_unit_price":899,"currency_id":"MXN","manufacturing_days":null,"sale_fee":118.67,"listing_type_id":"gold_special","base_exchange_rate":null,"base_currency_id":null,"element_id":null,"discounts":null,"bundle":null,"compat_id":null}],"currency_id":"MXN","payments":[{"id":69542757708,"order_id":2000007253973958,"payer_id":350545525,"collector":{"id":234394930},"card_id":null,"reason":"Escalera De Aluminio Telescopica 4 Escalones Homex Color Blanco","site_id":"MLM","payment_method_id":"oxxo","currency_id":"MXN","installments":1,"issuer_id":"2017","atm_transfer_reference":{"transaction_id":"9700010316437569","company_id":""},"coupon_id":null,"activation_uri":"https://www.mercadolibre.com.mx/payments/69542757708/ticket?caller_id=350545525&payment_method_id=oxxo&payment_id=69542757708&payment_method_reference_id=10316437569&hash=e28da1b8-905c-444d-81a5-de2df136eec9","operation_type":"regular_payment","payment_type":"ticket","available_actions":["refund"],"status":"approved","status_code":null,"status_detail":"accredited","transaction_amount":791.12,"transaction_amount_refunded":0,"taxes_amount":0,"shipping_cost":0,"coupon_amount":0,"overpaid_amount":0,"total_paid_amount":791.12,"installment_amount":null,"deferred_period":null,"date_approved":"2023-12-27T15:53:18.000-04:00","transaction_order_id":null,"date_created":"2023-12-27T12:29:25.000-04:00","date_last_modified":"2023-12-27T15:55:28.000-04:00","marketplace_fee":118.67,"reference_id":null,"authorization_code":null}],"shipping":{"substatus_history":[],"snapshot_packing":{"snapshot_id":"36c98e39-f760-4eb7-9a0e-d932b3ab5d98","pack_hash":"1"},"receiver_id":350545525,"base_cost":117,"status_history":{"date_shipped":null,"date_returned":null,"date_delivered":null,"date_first_visit":null,"date_not_delivered":null,"date_cancelled":null,"date_handling":null,"date_ready_to_ship":null},"type":"forward","return_details":null,"sender_id":234394930,"mode":"me2","order_cost":791.12,"priority_class":{"id":"20"},"service_id":null,"shipping_items":[{"domain_id":null,"quantity":1,"dimensions_source":{"origin":"high_coverage","id":"MLM2712121084__1"},"description":"Escalera De Aluminio Telescopica 4 Escalones Homex Color Blanco","id":"MLM2712121084","user_product_id":null,"sender_id":234394930,"dimensions":"13.0x40.0x83.0,6272.0"}],"tracking_number":null,"cost_components":{"loyal_discount":0,"special_discount":0,"compensation":0,"gap_discount":0,"ratio":245},"id":42953764561,"tracking_method":null,"last_updated":"2023-12-27T15:54:20.263-04:00","items_types":["fragile","new"],"comments":null,"substatus":"creating_route","date_created":"2023-12-27T12:29:24.822-04:00","date_first_printed":null,"created_by":"receiver","application_id":null,"shipping_option":{"processing_time":null,"cost":0,"estimated_schedule_limit":{"date":null},"shipping_method_id":509450,"estimated_delivery_final":{"date":"2024-01-04T00:00:00.000-06:00","offset":720},"buffering":{"date":null},"pickup_promise":{"from":null,"to":null},"list_cost":128,"estimated_delivery_limit":{"date":"2024-01-04T00:00:00.000-06:00","offset":192},"priority_class":{"id":"20"},"delivery_promise":"estimated","delivery_type":"estimated","estimated_handling_limit":{"date":null},"estimated_delivery_time":{"date":"2024-01-04T00:00:00.000-06:00","pay_before":"2023-12-28T10:00:00.000-06:00","schedule":null,"unit":"hour","offset":{"date":"2024-01-05T00:00:00.000-06:00","shipping":24},"shipping":24,"time_frame":{"from":null,"to":null},"handling":96,"type":"known_frame"},"name":"Estándar a domicilio","id":1176876510,"estimated_delivery_extended":{"date":"2024-01-04T00:00:00.000-06:00","offset":192},"currency_id":"MXN"},"tags":[],"sender_address":{"country":{"id":"MX","name":"Mexico"},"address_line":"XXXXXXX","types":["default_return_address","shipping"],"scoring":null,"agency":null,"city":{"id":"TUxNQ1RVTDM3NDQ","name":"Tultitlán"},"geolocation_type":"ROOFTOP","latitude":0,"municipality":{"id":null,"name":null},"location_id":null,"street_name":"XXXXXXX","zip_code":"XXXXXXX","geolocation_source":"map-verified","intersection":null,"street_number":"XXXXXXX","comment":"XXXXXXX","id":1235134699,"state":{"id":"MX-MEX","name":"Estado De México"},"neighborhood":{"id":null,"name":"San Mateo Cuautepec"},"geolocation_last_updated":"2023-07-19T01:26:33.987Z","longitude":0},"sibling":{"reason":null,"sibling_id":null,"description":null,"source":null,"date_created":null,"last_updated":null},"return_tracking_number":null,"site_id":"MLM","carrier_info":null,"market_place":"MELI","receiver_address":{"country":{"id":"MX","name":"Mexico"},"address_line":"Calle Unión SN","types":["default_buying_address"],"scoring":null,"agency":null,"city":{"id":"TUxNQ0FUTDQzOTI","name":"Atlatlahucan"},"geolocation_type":"ROOFTOP","latitude":18.939076,"municipality":{"id":null,"name":null},"location_id":null,"street_name":"Calle Unión","zip_code":"62847","geolocation_source":"map-verified","delivery_preference":"residential","intersection":null,"street_number":"SN","receiver_name":"Emma Juárez","comment":"Referencia: callejón enfrente de la panadería que esta abajo de la tienda las palomas en una casa de block griscon un portón color chocolate","id":1004380194,"state":{"id":"MX-MOR","name":"Morelos"},"neighborhood":{"id":null,"name":"San Juan Texcalpan"},"geolocation_last_updated":"2023-02-20T21:53:58Z","receiver_phone":"XXXXXXX","longitude":-98.92722},"customer_id":null,"order_id":2000007253973958,"quotation":null,"status":"pending","logistic_type":"xd_drop_off"},"status":"paid","status_detail":null,"tags":["catalog","paid","not_delivered"],"internal_tags":[],"feedback":{"seller":null,"buyer":null},"context":{"channel":"marketplace","site":"MLM","flows":["catalog"],"application":null,"product_id":null,"store_id":null},"seller":{"id":234394930},"buyer":{"id":350545525,"nickname":"VALEE1994JUAREZ","first_name":"Valentina Quetzali","last_name":"Martinez Juarez"},"taxes":{"amount":null,"currency_id":null,"id":null},"cancel_detail":null,"manufacturing_ending_date":null,"order_request":{"change":null,"return":null}}
+let MlReceptor={"_id":"658cd6fb2301311be2213aaf","buyerid":350545525,"defaultRfc":"EKU9003173C9","receptores":[{"rfc":"EKU9003173C9","nombre":"ESCUELA KEMPER URGATE","email":"rtyu@gmail.com","regimen":"601","zip":"97134"}]}
+let MlItemsBinded=[{"item":{"item":{"id":"MLM2712121084","title":"Escalera De Aluminio Telescopica 4 Escalones Homex Color Blanco","category_id":"MLM31541","variation_id":null,"seller_custom_field":null,"variation_attributes":[],"warranty":"Garantía del vendedor: 14 días","condition":"new","seller_sku":"escalera-4blanca","global_price":null,"net_weight":null},"quantity":1,"requested_quantity":{"value":1,"measure":"unit"},"picked_quantity":null,"unit_price":791.12,"full_unit_price":899,"currency_id":"MXN","manufacturing_days":null,"sale_fee":118.67,"listing_type_id":"gold_special","base_exchange_rate":null,"base_currency_id":null,"element_id":null,"discounts":null,"bundle":null,"compat_id":null},"binder":{"_id":null,"productId":"MLM2712121084","claveProdServ":"30191501","claveUnidad":"H87","profileId":"635c35131b9e4f38f613dd0b","customized":false,"taxes":[{"type":"iva","tipo":"Fijo","retencion":false,"tasa":0.16}]}}]
+let logoUrl="https://misventas-static.nyc3.digitaloceanspaces.com/LogoSmall.png"
+let orderBinder=null
+let usosCfdi=[{"clave":"G01","descripcion":"Adquisición de mercancías","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"I01","descripcion":"Construcciones","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"I02","descripcion":"Mobiliario y equipo de oficina por inversiones","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"G03","descripcion":"Gastos en General","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"I03","descripcion":"Equipo de transporte","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"I06","descripcion":"Comunicaciones telefónicas","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"I07","descripcion":"Comunicaciones satelitales","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"D03","descripcion":"Gastos funerales","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"I08","descripcion":"Otra máquinaria y equipo","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"I05","descripcion":"Dados, troqueles, moldes, matrices y herramental","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"D08","descripcion":"Gastos de transportación escolar obligatoria","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"D05","descripcion":"Intereses reales efectivamente pagados por créditos hipotecarios","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"D02","descripcion":"Gastos médicos por incapacidad o discapacidad","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"G02","descripcion":"Devoluciones, descuentos o bonificaciones","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"D04","descripcion":"Donativos","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"D07","descripcion":"Primas por seguros de gastos médicos","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"I04","descripcion":"Equipo de cómputo y accesorios","forRegimen":["601","603","606","612","620","621","622","623","624","625","626"]},{"clave":"D10","descripcion":"Pagos por servicios educativos (colegiaturas)","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"D01","descripcion":"Honorarios médicos, dentales y gastos hospitalarios","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"D09","descripcion":"Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"D06","descripcion":"Aportaciones voluntarias al SAR","forRegimen":["605","606","607","608","611","612","614","615","625"]},{"clave":"P01","descripcion":"Por definir","forRegimen":[]},{"clave":"S01","descripcion":"Sin efectos fiscales","forRegimen":["601","603","605","606","608","610","612","614","616","620","621","622","623"]}]
+let canStillBill=true
+let dateOverride=null
+let restarmpArgs=null
+</script>
+<script>
+    function createMachine(stateMachineDefinition) {
+    const machine = {
+        value: stateMachineDefinition.initialState,
+        transition(currentState, event) {
+            const currentStateDefinition = stateMachineDefinition[currentState]
+            const destinationTransition = currentStateDefinition.transitions[event]
+            if (!destinationTransition) {
+                return
+            }
+            const destinationState = destinationTransition.target
+            const destinationStateDefinition =
+                stateMachineDefinition[destinationState]
+            destinationTransition.action()
+            currentStateDefinition.actions.onExit()
+            destinationStateDefinition.actions.onEnter()
+            machine.value = destinationState
+            return machine.value
+        },
+    }
+    return machine
+}
+</script>
+<script>
+    const post = (url, data = {}) => {
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then((responsePromise) => {
+            if (responsePromise.ok) {
+                return responsePromise.json();
+            } else {
+                if (responsePromise.status === 400) {
+                    return responsePromise.json();
+                } else {
+                    return responsePromise.text();
+                }
+            }
+        })
+        .then(responseParsed => {
+            if (typeof responseParsed === 'string') {
+                throw new Error(responseParsed)
+            } else if (responseParsed['err']) {
+                throw responseParsed;
+            } else if (responseParsed['code']) {
+                throw responseParsed;
+            } else {
+                return responseParsed;
+            }
+        });
+    // Use external Catch!
+}
+
+const delRest = (url, data = {}) => {
+    return fetch(url, {
+        method: 'DELETE',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then((responsePromise) => {
+            if (responsePromise.ok) {
+                return responsePromise.json();
+            } else {
+                if (responsePromise.status === 400) {
+                    return responsePromise.json();
+                } else {
+                    return responsePromise.text();
+                }
+            }
+        })
+        .then(responseParsed => {
+            if(responseParsed === null){
+                return responseParsed;
+            }
+            if (typeof responseParsed === 'string') {
+                throw new Error(responseParsed)
+            } else if (responseParsed['err']) {
+                throw responseParsed;
+            } else if (responseParsed['code']) {
+                throw responseParsed;
+            } else {
+                return responseParsed;
+            }
+        });
+    // Use external Catch!
+}
+
+</script>
+</head>
+<body>
+    <div id="CONTAINER">
+    <div id="BD">
+        <div class="row together">
+            <p><b>Cliente:</b></p>
+            <p id="BD_presentation">
+
+            </p>
+        </div>
+        <div class="row">
+            <h1 id="BD_TITLE">
+            </h1>
+            <h2 id="BD_TOTAL">
+            </h2>
+        </div>
+    </div>
+    <div id="SelectRfc">
+        <div class="sectionTitle">
+            <h3 class="sectionTitle">Selecciona el RFC para facturar</h3>
+        </div>
+        <div id="SelectRfc_cardListing">
+
+        </div>
+        <div class="row">
+            <p class="center">- O -</p>
+        </div>
+        <div class="actions">
+            <button onclick="goToNewRfc()">
+                Crea un RFC nuevo
+            </button>
+        </div>
+    </div>
+    <div id="NRFC">
+        <div class="sectionTitle">
+            <h3 class="sectionTitle">Agrega un nuevo RFC para facturar</h3>
+
+        </div>
+        <form id="NRFC_FORM" class="form card" onsubmit="submitNewRfc()">
+
+            <div class="input">
+                <label>Razón social</label>
+                <input oninput="validateNewRfc()" id="NRFC_NAME" type="text" placeholder="Nueva Razón Social" />
+            </div>
+            <div class="input">
+                <label>RFC</label>
+                <input oninput="validateNewRfc()" id="NRFC_RFC" type="text" placeholder="Nuevo RFC" />
+            </div>
+            <div class="input">
+                <label>Email</label>
+                <input oninput="validateNewRfc()" id="NRFC_EMAIL" type="text" placeholder="Nuevo Correo" />
+            </div>
+
+            <div class="input">
+                <label>Tú regimen fiscal</label>
+                <select oninput="validateNewRfc()" id="NRFC_REGIMEN">
+                    <option value="" disabled selected>Elige tu régimen fiscal</option>
+                    <option value="601">601 - Persona Moral</option>
+                    <option value="605">605 - Asalariados</option>
+                    <option value="612">612 - Actividad empresarial</option>
+                    <option value="621">621 - Incorporación Fiscal</option>
+                    <option value="625">625 - Ingresos por plataformas digitales</option>
+                    <option value="626">626 - Régimen Simplificado de Confianza</option>
+                    <option disabled value="---">Otros régimenes</label>
+                    <option value="603">603 - Sin fin de Lucro</option>
+                    <option value="606">606 - Arrendamiendo</option>
+                    <option value="607">607 - Enajenación de bienes</option>
+                    <option value="608">608 - Demás ingresos</option>
+                    <option value="609">609 - Consolidación</option>
+                    <option value="610">610 - Residentes en el Extranjero</option>
+                    <option value="611">611 - Ingreso por Dividendos</option>
+                    <option value="614">614 - Ingreso por Intereses</option>
+                    <option value="620">620 - Cooperativas de producción</option>
+                    <option value="622">622 - Actividades Agrícolas</option>
+                    <option value="623">623 - Opcional para sociedades</option>
+                    <option value="624">624 - Coordinados</option>
+                    <option value="628">628 - Hidrocarburos</option>
+                </select>
+            </div>
+            <div class="input">
+                <label>Código postal domicilio Fiscal</label>
+                <input oninput="zipCode('NRFC_ZIP')" id="NRFC_ZIP" type="text" placeholder="76020" />
+            </div>
+
+        </form>
+        <p id="NRFC_ERROR">
+
+        </p>
+        <button id="NRFC_SAVE" class="primary" disabled type="button" onclick="submitNewRfc()">
+            Guardar
+        </button>
+        <button type="button" onclick="returnToSelect()">
+            Regresar
+        </button>
+    </div>
+    <div id="CONFIRM">
+        <div class="sectionTitle">
+            <h3 class="sectionTitle">Tu factura está lista para emitirse</h3>
+        </div>
+        <div id="CONFIRM_BILL">
+            <div class="_wrapLOGO">
+                <div id="CONFIRM_LOGO_URL">
+
+                </div>
+            </div>
+            <div id="CONFIRM_BILL_RECEPTOR" class="card">
+                <div class="labelValue">
+                    <p class="label">Nombre Receptor</p>
+                    <p id="CONFIRM_BILL_RECEPTOR_NOMBRE"></p>
+                </div>
+                <div class="labelValue">
+                    <p class="label">RFC Receptor</p>
+                    <p id="CONFIRM_BILL_RECEPTOR_RFC"></p>
+                </div>
+                <div class="labelValue">
+                    <p class="label">Régimen Receptor</p>
+                    <p id="CONFIRM_BILL_RECEPTOR_REGIMEN"></p>
+                </div>
+            </div>
+            <div id="CONFIRM_BILL_CONCEPTOS" class="card">
+
+            </div>
+            <div id="CONFIRM_BILL_TOTAL">
+
+            </div>
+            <div class="_divider"></div>
+            <div class="input">
+                <label>Forma de Pago:</label>
+                <select id="CONFIRM_FORMA_PAGO" onchange="updateFormaPago()">
+                </select>
+            </div>
+            <div class="input">
+                <label>Uso de CFDI:</label>
+                <select id="CONFIRM_USO_CFDI" onchange="updateUsoCfdi()">
+                </select>
+            </div>
+            <p id="INPUT_USO_WARNING">
+                Tu Régimen solo puede usar S01 en CFDI 4.0
+            </p>
+            <div class="input">
+                <label>Enviar factura a email:</label>
+                <input id="CONFIRM_BILL_EMAIL" type="text" oninput="updateEmail()" placeholder="Email para facturar" />
+            </div>
+            <div class="input checkbox">
+                <input id="CONFIRM_BILL_DEFAULT" type="checkbox" oninput="updateIsDefault()"
+                    placeholder="Email para facturar" />
+                <label>Facturar mis pedidos a este RFC</label>
+            </div>
+            <p id="CONFIRM_STAMP_ERR"></p>
+            <button id="CONFIRM_BILL_STAMP" class="primary" onclick="StampCFDI()">
+                Facturar pedido
+            </button>
+            <button id="CONFIRM_GO_BACK" onclick="returnConfirmToSelect()">
+                Seleccionar otro RFC
+            </button>
+        </div>
+    </div>
+    <div id="STAMPED">
+        <div class="sectionTitle">
+            <h3 class="sectionTitle" id="STAMPED_LEYEND">Esta orden ya fué facturada</h3>
+        </div>
+        <div class="card">
+            <p><b>UUID:</b> <br />
+                <span id="STAMPED_UUID"></span>
+            </p>
+        </div>
+        <div class="actions">
+            <div class="_hiddenLinks">
+                <a download id="STAMPED_DOWNLOAD_PDF"></a>
+                <a download id="STAMPED_DOWNLOAD_XML"></a>
+            </div>
+            <button onclick="downloadXml()">
+                Descargar XML
+            </button>
+            <button class="primary" onclick="downloadPdf()">
+                Descargar PDF
+            </button>
+        </div>
+
+        <div id="RESTAMP_UUID">
+        </div>
+
+    </div>
+    <div id="EXPIRED">
+        <div class="sectionTitle">
+            <h3 class="sectionTitle" id="STAMPED_LEYEND_EXPIRED">La oportunidad para facturar esta orden ha caducado
+            </h3>
+        </div>
+    </div>
+</div>
+<div id="UPDATE_REGIMEN">
+    <div class="overlay">
+
+    </div>
+    <div class="card">
+        <h3>
+            Corrige tus datos
+        </h3>
+        <p id="UPDATE_REGIMEN_MESSAGE">
+            Revisa tu Nombre, régimen fiscal y código postal. 
+            <br />
+            Uno de ellos o ambos son incorrectos.
+        </p>
+        <div class="input">
+            <label>Razón Social</label>
+            <input oninput="updateRazonSocial()" id="UPDATED_NAME" type="text" placeholder="Nombre completo y ambos apellidos" />
+        </div>
+        <div class="input">
+            <label>Tú regimen fiscal</label>
+            <select oninput="updateRegimen()" id="UPDATED_REGIMEN">
+                <option value="" disabled>Elige tu régimen fiscal</option>
+                <option value="601">601 - Persona Moral</option>
+                <option value="605">605 - Asalariados</option>
+                <option value="612">612 - Actividad empresarial</option>
+                <option value="621">621 - Incorporación Fiscal</option>
+                <option value="625">625 - Ingresos por plataformas digitales</option>
+                <option value="626">626 - Régimen Simplificado de Confianza</option>
+                <option disabled value="---">Otros régimenes</label>
+                <option value="603">603 - Sin fin de Lucro</option>
+                <option value="606">606 - Arrendamiendo</option>
+                <option value="607">607 - Enajenación de bienes</option>
+                <option value="608">608 - Demás ingresos</option>
+                <option value="609">609 - Consolidación</option>
+                <option value="610">610 - Residentes en el Extranjero</option>
+                <option value="611">611 - Ingreso por Dividendos</option>
+                <option value="614">614 - Ingreso por Intereses</option>
+                <option value="622">622 - Actividades Agrícolas</option>
+                <option value="624">624 - Coordinados</option>
+                <option value="628">628 - Hidrocarburos</option>
+            </select>
+        </div>
+        <div class="input">
+            <label>Código postal domicilio Fiscal</label>
+            <input oninput="updateZip()" id="UPDATED_ZIP" type="text" placeholder="76020" />
+        </div>
+        <div class="actions">
+            <button id="NEW_REGIMEN_SAVE" class="primary" disabled type="button" onclick="submitWithNewRegimen()">
+                Facturar con estos Datos
+            </button>
+        </div>
+    </div>
+</div>
+    <script>
+    
+// Initial state depends on receptor having at least one or none RFCs
+
+const appDictionary = {
+    receptor: null,
+    cfdi:null,
+    binder:null,
+    emailOverride: null,
+}
+
+const machine = createMachine({
+    initialState: 'empty',
+    empty: {
+        actions: {
+            onEnter() {
+                console.log('empty: onEnter');
+            },
+            onExit() {
+                console.log('empty: onExit')
+            },
+        },
+        transitions: {
+            new: {
+                target: 'newRfc',
+                action() {
+                    console.log('transition action for "new" in "empty" state')
+                },
+            },
+            select: {
+                target: 'rfcSelect',
+                action() {
+                    console.log('transition action for "select" in "empty" state')
+                },
+            },
+            stamp: {
+                target: 'stampCfdi',
+                action() {
+                    console.log('transition action for "stampCfdi" in "empty" state')
+                },
+            },
+            expired: {
+                target: 'expiredBill',
+                action() {
+                    console.log('transition action for "expiredBill" in "empty" state')
+                },
+            },
+        },
+    },
+    rfcSelect: {
+        actions: {
+            onEnter() {
+                console.log('rfcSelect: onEnter');
+                document.getElementById('SelectRfc').setAttribute('__current', true);
+            },
+            onExit() {
+                console.log('rfcSelect: onExit')
+                document.getElementById('SelectRfc').removeAttribute('__current');
+            },
+        },
+        transitions: {
+            new: {
+                target: 'newRfc',
+                action() {
+                    console.log('transition action for "new" in "rfcSelect" state')
+                },
+            },
+            confirm: {
+                target: 'confirmCfdi',
+                action() {
+                    console.log('transition action for "confirm" in "rfcSelect" state')
+                },
+            },
+        },
+    },
+    newRfc: {
+        actions: {
+            onEnter() {
+                // document.getElementById()
+                console.log('newRfc: onEnter');
+                document.getElementById('NRFC').setAttribute('__current', true);
+            },
+            onExit() {
+                console.log('newRfc: onExit')
+                document.getElementById('NRFC').removeAttribute('__current');
+            },
+        },
+        transitions: {
+            select: {
+                target: 'rfcSelect',
+                action() {
+                    console.log('transition action for "select" in "newRfc" state')
+                },
+            },
+            confirm: {
+                target: 'confirmCfdi',
+                action() {
+                    console.log('transition action for "confirm" in "newRfc" state')
+                },
+            },
+        },
+    },
+    confirmCfdi: {
+        actions: {
+            onEnter() {
+                console.log('confirmCfdi: onEnter');
+                translateOrderToCfdi();
+                setConfirmBill();
+                document.getElementById('CONFIRM').setAttribute('__current', true);
+            },
+            onExit() {
+                console.log('confirmCfdi: onExit')
+                document.getElementById('CONFIRM').removeAttribute('__current');
+            },
+        },
+        transitions: {
+            select: {
+                target: 'rfcSelect',
+                action() {
+                    console.log('transition action for "select" in "confirmCfdi" state')
+                },
+            },
+            stamp: {
+                target: 'stampCfdi',
+                action() {
+                    console.log('transition action for "stamp" in "confirmCfdi" state')
+                },
+            },
+        },
+    },
+    stampCfdi: {
+        actions: {
+            onEnter() {
+                console.log('stampCfdi: onEnter')
+                document.getElementById('STAMPED').setAttribute('__current', true);
+                setStampedCfdi();
+            },
+            onExit() {
+                console.log('stampCfdi: onExit')
+                document.getElementById('STAMPED').removeAttribute('__current');
+            },
+        },
+        transitions: {
+            // No destination transition, it will just return
+            select: {
+                target: 'rfcSelect',
+                action() {
+                    console.log('transition action for "select" in "confirmCfdi" state')
+                },
+            },
+        },
+    },
+    expiredBill: {
+        actions: {
+            onEnter() {
+                console.log('expiredBill: onEnter')
+                document.getElementById('EXPIRED').setAttribute('__current', true);
+            },
+            onExit() {
+                console.log('expiredBill: onExit')
+                document.getElementById('EXPIRED').removeAttribute('__current');
+            },
+        },
+        transitions: {
+            // No destination transition, it will just return
+        },
+    },
+})
+let appState = machine.value;
+</script>
+<script>
+    
+const EMAIL_REGEX = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+function zipCode(zipTag) {
+    document.getElementById(zipTag).value = document.getElementById(zipTag).value.split('').filter(s => /\b[0-9]{1}\b/.test(s)).filter((s, i) => i < 5).join('')
+    validateNewRfc()
+}
+
+function validateNewRfc() {
+    const elName = document.getElementById('NRFC_NAME')
+    const elRFC = document.getElementById('NRFC_RFC')
+    const elEmail = document.getElementById('NRFC_EMAIL')
+    const elRegimen = document.getElementById('NRFC_REGIMEN')
+    const elZip = document.getElementById('NRFC_ZIP')
+
+    const elButton = document.getElementById('NRFC_SAVE')
+    elEmail.value = elEmail.value.toLowerCase();
+    elRFC.value = elRFC.value.toUpperCase().split(' ').join('');
+    // Individual validations
+    const nameValid = (elName.value && elName.value.length > 2);
+    const rfcValid = (elRFC.value && elRFC.value.length >= 12 && elRFC.value.length <= 13);
+    const emailValid = EMAIL_REGEX.test(elEmail.value);
+    const regimenValid = !!elRegimen.value;
+    const zipValid = /^[0-9]{5}$/.test(elZip.value);
+
+    if (nameValid && rfcValid && emailValid && regimenValid && zipValid) {
+        elButton.removeAttribute('disabled');
+    } else {
+        elButton.setAttribute('disabled', true);
+    }
+    // State error hints per input ======
+    // >> Email
+    if (elEmail.value.length > 5 && !emailValid) {
+        if (!elEmail.classList.contains('_error')) {
+            elEmail.classList.add('_error');
+        }
+    } else {
+        if (elEmail.classList.contains('_error')) {
+            elEmail.classList.remove('_error');
+        }
+    }
+    // >> RFC
+    if (elRFC.value.length > 10 && !rfcValid) {
+        if (!elRFC.classList.contains('_error')) {
+            elRFC.classList.add('_error');
+        }
+    } else {
+        if (elRFC.classList.contains('_error')) {
+            elRFC.classList.remove('_error');
+        }
+    }
+    // >> ZIP
+    if (!zipValid) {
+        if (!elZip.classList.contains('_error')) {
+            elZip.classList.add('_error');
+        }
+    } else {
+        if (elZip.classList.contains('_error')) {
+            elZip.classList.remove('_error');
+        }
+    }
+    // >> REGIMEN
+    if (!regimenValid) {
+        if (!elRegimen.classList.contains('_error')) {
+            elRegimen.classList.add('_error');
+        }
+    } else {
+        if (elRegimen.classList.contains('_error')) {
+            elRegimen.classList.remove('_error');
+        }
+    }
+    return nameValid && rfcValid && emailValid && regimenValid && zipValid;
+}
+
+function listenToEnter(e) {
+    if ((e && e.keyCode == 13) || e == 0) {
+        submitNewRfc();
+    }
+}
+
+function returnToSelect() {
+    appState = machine.transition(appState, 'select');
+}
+
+function deleteRfc(receptor) {
+    delRest(`https://ml-facturar.fiscalpop.com/api/receptores/${MlOrder.buyer.id}/${MlOrder.id}/${MlOrder.seller.id}`, receptor)
+        .then((updatedReceptor) => {
+            console.log('Adding RFC: ', updatedReceptor);
+            MlReceptor = updatedReceptor;
+            setRfcOptions();
+            if (!MlReceptor) {
+                appState = machine.transition(appState, 'new');
+            }
+            // LogRocket.track('Delete RFC');
+        })
+        .catch(err => {
+            console.error('Error deleting receptor: ', err);
+        })
+}
+
+function submitNewRfc() {
+    const elName = document.getElementById('NRFC_NAME')
+    const elRFC = document.getElementById('NRFC_RFC')
+    const elEmail = document.getElementById('NRFC_EMAIL')
+    const elRegimen = document.getElementById('NRFC_REGIMEN')
+    const elZip = document.getElementById('NRFC_ZIP')
+
+    const elError = document.getElementById('NRFC_ERROR')
+    const elButton = document.getElementById('NRFC_SAVE')
+    if (!validateNewRfc()) {
+        return;
+    }
+    console.log('Submitting RFC');
+    const rfc = elRFC.value.toUpperCase().split('').filter((s) => /^[\w,Ñ]+$/.test(s) || s === '&').join('');
+    const regimenFisica = [605, 606, 607, 608, 611, 612, 614, 615, 621, 625, 626].map(i => `${i}`);
+
+    let regimen = elRegimen.value;
+    if (!regimenFisica.includes(regimen) && rfc.length === 13) {
+    // if ((regimen === '601' || regimen === '603' || regimen === '620') && rfc.length === 13) {
+        regimen = '612';
+    } else if ((regimenFisica.includes(regimen) && regimen !== '626') && rfc.length === 12) {
+        // >> personas Morales only correct from 612
+        regimen = '601';
+    }
+
+    const receptor = {
+        nombre: elName.value.trimRight().trimLeft(),
+        // Some users have been saving RFC as SDN-8501014D2
+        rfc: rfc,
+        email: elEmail.value.toLowerCase().split(' ').join(''),
+        // Some users incorrectly "insist" they're personas morales when they're not, force them to be 612 if RFC.length is 13 (Fisica)
+        regimen: regimen,
+        zip: elZip.value
+    }
+    elError.textContent = '';
+    elName.setAttribute('disabled', true);
+    elRFC.setAttribute('disabled', true);
+    elEmail.setAttribute('disabled', true);
+    elButton.setAttribute('disabled', true);
+    post(`https://ml-facturar.fiscalpop.com/api/receptores/${MlOrder.buyer.id}/${MlOrder.id}/${MlOrder.seller.id}`, receptor)
+        .then((updatedReceptor) => {
+            console.log('Adding RFC: ', updatedReceptor);
+            MlReceptor = updatedReceptor;
+            setRfcOptions();
+            elEmail.removeAttribute('disabled');
+            elRFC.removeAttribute('disabled');
+            elName.removeAttribute('disabled');
+            elButton.removeAttribute('disabled');
+            elEmail.value = ''
+            elRFC.value = ''
+            elName.value = ''
+            appDictionary.receptor = receptor;
+            appState = machine.transition(appState, 'confirm');
+            // LogRocket.track('Add RFC');
+        })
+        .catch(err => {
+            console.error('Error adding receptor: ', err);
+            elError.textContent = err;
+            elEmail.removeAttribute('disabled');
+            elRFC.removeAttribute('disabled');
+            elName.removeAttribute('disabled');
+            elButton.removeAttribute('disabled');
+        })
+}
+</script>
+<script>
+    
+
+function selectRfc(receptorRfc) {
+    const receptor = MlReceptor.receptores.find(r => r.rfc === receptorRfc);
+    // >> Correct cases when RFC is incorrectly using regimen for moral having a RFC of length 13
+    if ((receptor.regimen === '601' || receptor.regimen === '603' || receptor.regimen === '620') && receptor.rfc.length === 13) {
+        receptor.regimen = '612';
+    } else if ((receptor.regimen === '605' || receptor.regimen === '606' || receptor.regimen === '612') && receptor.rfc.length === 12) {
+        // >> personas Morales only correct from 612
+        receptor.regimen = '601';
+    }
+
+    if (receptor.regimen && receptor.zip) {
+        appDictionary.receptor = receptor;
+        appState = machine.transition(appState, 'confirm');
+    } else {
+        // Regimen & zip is missing, go to form
+        if (receptor.nombre) {
+            document.getElementById('NRFC_NAME').value = receptor.nombre;
+        }
+        if (receptor.rfc) {
+            document.getElementById('NRFC_RFC').value = receptor.rfc;
+        }
+        if (receptor.email) {
+            document.getElementById('NRFC_EMAIL').value = receptor.email;
+        }
+        document.getElementById('NRFC_REGIMEN').value = '';
+        document.getElementById('NRFC_REGIMEN').classList.add('_error');
+        document.getElementById('NRFC_ZIP').classList.add('_error');
+        validateNewRfc()
+
+        appState = machine.transition(appState, 'new');
+    }
+}
+
+
+function goToNewRfc() {
+    appState = machine.transition(appState, 'new');
+}
+</script>
+<script>
+    
+function itemBinderMapReducer(items) {
+    let state = {};
+    for (const binder of items) {
+        const item = binder.item;
+        if (!state[item.item.id]) {
+            state[item.item.id] = binder;
+        }
+    }
+    return Object.assign({}, state);
+}
+
+function generateCfdiConceptos() {
+    const itemBindersMap = itemBinderMapReducer(MlItemsBinded);
+    if (!!Object.keys(itemBindersMap).length && MlOrder) {
+        // Items' binder complete, can proceed with calculating total
+        const shippingConcept = [];
+        if (!!MlOrder.shipping_cost) {
+            const shipConcept = {
+                claveProdServ: '78102203',
+                claveUnidad: 'XUN',
+                cantidad: 1,
+                descripcion: 'Envío de paquetería',
+                valorUnitario: Math.round((MlOrder.shipping_cost / 1.16) * 100) / 100,
+                impuestos: [
+                    {
+                        type: 'iva',
+                        tipo: 'Fijo',
+                        retencion: false,
+                        tasa: 0.16
+                    }
+                ]
+            };
+            shippingConcept.push(shipConcept);
+        }
+        const billConcepts = MlOrder.order_items.reduce((p, c) => {
+            const binder = itemBindersMap[c.item.id];
+            const taxes = binder.binder.taxes;
+            const iva = taxes.find(t => t.type === 'iva');
+            const ieps = taxes.filter(t => t.type === 'ieps');
+            const iepsCuota = ieps.reduce((p, c) => p += (c.cuota || 0), 0);
+            const iepsTasa = ieps.reduce((p, c) => p += (c.tasa || 0), 0);
+
+            // Kits collection handle conceptos differently
+            if (binder.binder.isKitComponent && binder.binder.kitComponent.length) {
+                // Some discrepancies have been found where prices change between order created and stamping, adjust if necessary
+                const kitComponentFinalPrice = binder.binder.kitComponent.reduce((sum, k) => sum += (k.taxIncludedCost * k.quantity), 0);
+                const relative = (kitComponentFinalPrice / c.unit_price)
+
+                binder.binder.kitComponent.forEach(kitEntry => {
+                    const subtotalPreIeps = (Math.round(((kitEntry.taxIncludedCost / relative) / (1 + iva.tasa)) * 100) / 100);
+                    const subtotal = iepsCuota > 0 ? subtotalPreIeps - iepsCuota : Math.round((subtotalPreIeps / (1 + iepsTasa)) * 100) / 100;
+                    p.push({
+                        claveProdServ: kitEntry.claveProdServ || binder.binder.claveProdServ,
+                        claveUnidad: kitEntry.claveUnidad || binder.binder.claveUnidad,
+                        cantidad: kitEntry.quantity * c.quantity,
+                        descripcion: kitEntry.name,
+                        valorUnitario: subtotal,
+                        impuestos: taxes.map(t => {
+                            const taxProt = {
+                                type: t.type,
+                                retencion: false,
+                            }
+                            if (t.tasa || t.tasa === 0) {
+                                taxProt.tasa = t.tasa;
+                            }
+                            if (t.cuota) {
+                                taxProt.cuota = t.cuota;
+                            }
+                            return taxProt;
+                        })
+                    })
+                })
+            } else {
+                const subtotalPreIeps = (Math.round((c.unit_price / (1 + iva.tasa)) * 100) / 100);
+                const subtotal = iepsCuota > 0 ? subtotalPreIeps - iepsCuota : Math.round((subtotalPreIeps / (1 + iepsTasa)) * 100) / 100;
+                const baseConcepto = {
+                    claveProdServ: binder.binder.claveProdServ || '01010101',
+                    claveUnidad: binder.binder.claveUnidad || 'H87',
+                    cantidad: c.quantity,
+                    descripcion: c.item.title,
+                    valorUnitario: subtotal,
+                    impuestos: taxes.map(t => {
+                        const taxProt = {
+                            type: t.type,
+                            retencion: false,
+                        }
+                        if (t.tasa || t.tasa === 0) {
+                            taxProt.tasa = t.tasa;
+                        }
+                        if (t.cuota) {
+                            taxProt.cuota = t.cuota;
+                        }
+                        return taxProt;
+                    })
+                }
+                if(binder.binder.pedimento) {
+                    baseConcepto.pedimento = [binder.binder.pedimento];
+                }
+                p.push(baseConcepto)
+            }
+            return p;
+        }, []);
+        console.log('Assigning conceptos: ', billConcepts.concat(shippingConcept));
+        return billConcepts.concat(shippingConcept);
+    }
+}
+
+function translateOrderToCfdi() {
+    const baseCfdi = {
+        serie: 'ECOM',
+        folio: `${MlOrder.id}` || '01',
+        formaPago: '31',
+        metodoPago: 'PUE',
+        // lugarExpedicion: currentUser.fiscalpopProfile.lugarExpedicion || '',
+        tipoDeComprobante: 'I',
+        receptor: {
+            nombre: appDictionary.receptor.nombre || 'PUBLICO EN GENERAL',
+            rfc: appDictionary.receptor.rfc || 'XAXX010101000',
+            usoCFDI: 'G03',
+            email: appDictionary.receptor.email || '',
+            regimen: appDictionary.receptor.regimen,
+            zip: appDictionary.receptor.zip
+        },
+        conceptos: [],
+    }
+    // >> Is this a replacement CFDI ? 
+    if (!!restarmpArgs) {
+        baseCfdi.cfdiRelacionados = restarmpArgs.cfdiRelacionados;
+    }
+
+    // >> NOTA: Forma de pago default correcta es intermediarios "31" por ser MercadoLibre
+    // Look for payments details to assume options for payment
+    if (MlOrder.payments && MlOrder.payments.length) {
+        const primaryPayment = MlOrder.payments.reduce((p, c) => {
+            if (!p.total_paid_amount) {
+                return c;
+            } else if (p.total_paid_amount < c.total_paid_amount) {
+                return c;
+            } else {
+                return p;
+            }
+        }, {});
+        // 'debit_card' | 'credit_card' | 'account_money' | 'ticket'
+        if (primaryPayment.payment_type === 'debit_card') {
+            baseCfdi.formaPago = '28';
+        }
+        else if (primaryPayment.payment_type === 'credit_card') {
+            baseCfdi.formaPago = '04';
+        }
+        else if (primaryPayment.payment_type === 'account_money') {
+            baseCfdi.formaPago = '31';
+        }
+        else if (primaryPayment.payment_type === 'digital_currency') {
+            baseCfdi.formaPago = '06';
+        }
+        else if (primaryPayment.payment_type === 'ticket') {
+            baseCfdi.formaPago = '31';
+        } else {
+            baseCfdi.formaPago = '31';
+        }
+    } else {
+        baseCfdi.formaPago = '31';
+    }
+    if (dateOverride) {
+        baseCfdi.fecha = dateOverride;
+    }
+    baseCfdi.conceptos = generateCfdiConceptos();
+    console.log('Base CFDI: ', baseCfdi);
+    appDictionary.cfdi = baseCfdi;
+}
+
+function updateEmail() {
+    const elEmail = document.getElementById('CONFIRM_BILL_EMAIL');
+    const elButton = document.getElementById('CONFIRM_BILL_STAMP');
+    const emailValid = EMAIL_REGEX.test(elEmail.value);
+    console.log('Email Valid: ', emailValid);
+    appDictionary.cfdi.receptor.email = elEmail.value;
+    if (!emailValid) {
+        elButton.setAttribute('disabled', true);
+    } else {
+        elButton.removeAttribute('disabled');
+    }
+}
+
+function updateIsDefault() {
+    const elDefault = document.getElementById('CONFIRM_BILL_DEFAULT');
+    appDictionary.cfdi.receptor.isDefault = elDefault.checked;
+    console.log('Updated Receptor for Default: ', appDictionary.cfdi.receptor);
+}
+
+function updateUsoCfdi() {
+    const elUsoCfdi = document.getElementById("CONFIRM_USO_CFDI");
+    appDictionary.cfdi.receptor.usoCFDI = elUsoCfdi.value;
+}
+
+function updateFormaPago() {
+    const elFormaPago = document.getElementById("CONFIRM_FORMA_PAGO");
+    appDictionary.cfdi.formaPago = elFormaPago.value;
+}
+
+function returnConfirmToSelect() {
+    const elButton = document.getElementById('CONFIRM_BILL_STAMP');
+    const elError = document.getElementById('CONFIRM_STAMP_ERR');
+    elError.textContent = '';
+    appState = machine.transition(appState, 'select');
+    elButton.removeAttribute('disabled');
+    elButton.textContent = 'Facturar pedido';
+}
+
+function parsePAC_Error(errorEntry) {
+    const elButton = document.getElementById('CONFIRM_BILL_STAMP');
+    const elError = document.getElementById('CONFIRM_STAMP_ERR');
+    const elReturn = document.getElementById('CONFIRM_GO_BACK');
+    if (errorEntry.CodigoError === 'CFDI40161') {
+        // USO CFDI incorrect for this Regimen
+        const customErrExtraInfo = appDictionary.cfdi.receptor.regimen === '605' ? `, Régimen de Asalariados (605) pueden usar S01` : ``
+        elError.textContent = `Uso de CFDI no válido para este régimen fiscal${customErrExtraInfo}`;
+        elButton.textContent = 'Cambie o modifique Uso de CFDI e intente nuevamente';
+        elButton.removeAttribute('stamping');
+        elButton.removeAttribute('disabled');
+        elReturn.removeAttribute('disabled');
+    } else {
+        const MensajeIncidencia = errorEntry.MensajeIncidencia;
+        elError.textContent = MensajeIncidencia;
+        elButton.removeAttribute('stamping');
+        elReturn.removeAttribute('disabled');
+        elButton.textContent = 'Cambie o modifique el RFC para continuar';
+    }
+}
+
+function parseFPOP_Error(errorEntry) {
+    const elButton = document.getElementById('CONFIRM_BILL_STAMP');
+    const elError = document.getElementById('CONFIRM_STAMP_ERR');
+    const elReturn = document.getElementById('CONFIRM_GO_BACK');
+    const Message = !!errorEntry.code ? `${errorEntry.code} - ${errorEntry.message}` : errorEntry.message;
+    elError.textContent = Message;
+    elButton.removeAttribute('stamping');
+    elReturn.removeAttribute('disabled');
+    elButton.textContent = 'Comuníquele este error a su vendedor';
+}
+
+function updateRegimen() {
+    const elRegimen = document.getElementById('UPDATED_REGIMEN')
+    const elButton = document.getElementById('NEW_REGIMEN_SAVE');
+    const regimenValid = !!elRegimen.value;
+    if (regimenValid) {
+        elButton.removeAttribute('disabled');
+        appDictionary.receptor.regimen = elRegimen.value;
+        appDictionary.cfdi.receptor.regimen = elRegimen.value;
+    } else {
+        elButton.setAttribute('disabled', true);
+    }
+}
+
+
+function updateZip() {
+    document.getElementById('UPDATED_ZIP').value = document.getElementById('UPDATED_ZIP').value.split('').filter(s => /\b[0-9]{1}\b/.test(s)).filter((s, i) => i < 5).join('')
+    const elZip = document.getElementById('UPDATED_ZIP');
+    const elButton = document.getElementById('NEW_REGIMEN_SAVE');
+    const zipValid = /^[0-9]{5}$/.test(elZip.value);
+
+    if (zipValid) {
+        elButton.removeAttribute('disabled');
+        appDictionary.receptor.zip = elZip.value;
+        appDictionary.cfdi.receptor.zip = elZip.value;
+    } else {
+        elButton.setAttribute('disabled', true);
+    }
+}
+
+function updateRazonSocial() {
+    document.getElementById('UPDATED_NAME').value = document.getElementById('UPDATED_NAME').value.toUpperCase()
+    const elName = document.getElementById('UPDATED_NAME');
+    const elButton = document.getElementById('NEW_REGIMEN_SAVE');
+    const nameValid = elName.value.length > 2;
+
+    if (nameValid) {
+        elButton.removeAttribute('disabled');
+        appDictionary.receptor.nombre = elName.value;
+        appDictionary.cfdi.receptor.nombre = elName.value;
+    } else {
+        elButton.setAttribute('disabled', true);
+    }
+}
+
+
+function submitWithNewRegimen() {
+    const elRegimenDialog = document.getElementById('UPDATE_REGIMEN')
+    elRegimenDialog.classList.remove('active')
+    StampCFDI()
+}
+
+function openChangeRegimenDialog(errorType, isMoral = false) {
+    console.log('Opening Dialog')
+    const elRegimenDialog = document.getElementById('UPDATE_REGIMEN')
+    const elRegimenMessage = document.getElementById('UPDATE_REGIMEN_MESSAGE')
+    const elRegimen = document.getElementById('UPDATED_REGIMEN')
+    const elName = document.getElementById('UPDATED_NAME')
+    const elZip = document.getElementById('UPDATED_ZIP');
+
+    if(errorType === 'CFDI40158') {
+        // Regimen Fiscal receptor
+        elRegimenMessage.innerHTML = `<b>Error en Régimen Fiscal</b><br /><br />Revisa que estes usando el régimen fiscal correcto, para persona fīsica o moral.`
+    } 
+    else if(errorType === 'CFDI40147') {
+        // Domicilio receptor
+        elRegimenMessage.innerHTML = `<b>Error en Código Postal</b><br /><br />Revisa que sea el código postal que diste de alta en tu domicilio fiscal.`
+    }
+    else if(errorType === 'CFDI40144') {
+        // Nombre receptor
+        if(isMoral) {
+            elRegimenMessage.innerHTML = `<b>Error en Razón social</b><br /><br />Revisa que tu Razón social sea correcta. <br>No debe de contener siglas (S.A, C.V etc.)`
+        } else {
+            elRegimenMessage.innerHTML = `<b>Error en Razón social</b><br /><br />Revisa que tu Nombre esté completo. <br>Usa ambos apellidos y si tienes segundo nombre inclúyelo.`
+        }
+    } 
+    else {
+        elRegimenMessage.innerHTML = `<b>Error ${errorType}</b><br /><br />Revisa tu Nombre, Régimen fiscal y/o código postal. <br /> Uno de ellos es incorrecto.`
+    }
+
+    elZip.value = appDictionary.cfdi.receptor.zip;
+    elName.value = appDictionary.cfdi.receptor.nombre.toUpperCase().trimLeft().trimRight();
+    elRegimen.value = appDictionary.cfdi.receptor.regimen;
+    elRegimenDialog.classList.add('active')
+}
+
+function StampCFDI() {
+    const elButton = document.getElementById('CONFIRM_BILL_STAMP');
+    const elReturn = document.getElementById('CONFIRM_GO_BACK');
+    const elError = document.getElementById('CONFIRM_STAMP_ERR');
+    const elUUID = document.getElementById('STAMPED_UUID');
+    const elMessage = document.getElementById('STAMPED_LEYEND');
+    elError.textContent = '';
+    elButton.setAttribute('disabled', true);
+    elButton.setAttribute('stamping', true);
+    elButton.textContent = 'Facturando, espere...';
+    elButton.setAttribute('disabled', true);
+    elReturn.setAttribute('disabled', true);
+    console.log('CFDI: ', appDictionary.cfdi);
+    // Post to Back End to proceed
+    const buyerid = MlOrder.buyer.id;
+    const orderid = MlOrder.id;
+    const userid = MlOrder.seller.id;
+    if (window.location.search.includes('debugging=true')) {
+        elMessage.textContent = 'Orden en estado de debugging, no factura'
+        return console.log('appDictionary at confirm: ', appDictionary);
+    }
+    // post(`http://127.0.0.1:3020/api/stamp/${buyerid}/${orderid}/${userid}`, appDictionary.cfdi)
+    post(`https://ml-facturar.fiscalpop.com/api/stamp/${buyerid}/${orderid}/${userid}`, appDictionary.cfdi)
+        .then((binder) => {
+            appDictionary.binder = binder;
+            console.log('Binder: ', binder);
+            elMessage.textContent = 'Orden facturada correctamente'
+            appState = machine.transition(appState, 'stamp');
+            elUUID.textContent = binder.billUUID;
+            // Can only restamp one time and when restampArgs is set from Back End
+            restarmpArgs = null;
+            // LogRocket.track('Stamped bill');
+        })
+        .catch(err => {
+            console.error('Error stamping bill: ', err);
+            // Test if it's error de incidencia
+            elButton.setAttribute('disabled', false);
+            elReturn.setAttribute('disabled', false);
+            if (err.err && Array.isArray(err.err)) {
+                // Regimen error might require manual update of receptor
+                if (err.err[0].CodigoError === 'CFDI40158' || err.err[0].CodigoError === 'CFDI40147') {
+                    // Regimen fiscal R error
+                    openChangeRegimenDialog(err.err[0].CodigoError, appDictionary.cfdi.receptor.rfc.length === 12);
+                } else if (err.err[0].CodigoError === 'CFDI40144' && !err.err[0].ExtraInfo) {
+                    // IF name correction is not provided, it's most likely that regimen is incorrect
+                    openChangeRegimenDialog(err.err[0].CodigoError, appDictionary.cfdi.receptor.rfc.length === 12);
+                }
+
+                parsePAC_Error(err.err[0]);
+            } else {
+                // It's a pre-validation error
+                parseFPOP_Error(err);
+            }
+        })
+}
+</script>
+<script>
+    
+function downloadPdf(){
+    const elPDF = document.getElementById('STAMPED_DOWNLOAD_PDF');
+    elPDF.click();
+}
+function downloadXml(){
+    const elXML = document.getElementById('STAMPED_DOWNLOAD_XML');
+    elXML.click();
+}
+
+function replaceStamped() {
+    orderBinder = null;
+    setRfcOptions();
+    appState = machine.transition(appState, 'select');
+}
+function cancelBill() {
+    location.href = `${location.href.replace('facturacion/', 'facturacion/cancel/')}`
+}
+</script>
+<script>
+    function numberToCurrencyString(value) {
+    const valueString = value.toFixed(2);
+    const [integers, cents] = valueString.split('.');
+    const integerString = integers.split('').reverse().reduce((p, c, index) => {
+        const baseOneIndex = index + 1;
+        p.push(c);
+        if (!(baseOneIndex % 3) && baseOneIndex < (integers.split('').length)) {
+            p.push(`,`);
+        }
+        return p;
+    }, []).reverse().join('');
+    return `${integerString}.${cents}`;
+};
+
+function setRfcOptions() {
+    const cardListEl = document.getElementById('SelectRfc_cardListing');
+    if (!MlReceptor) {
+        cardListEl.innerHTML = '';
+        return
+    }
+    cardListEl.innerHTML = MlReceptor.receptores.map(_receptor => {
+        return `
+        <div class="card _receptorWrap">
+            <div class="_receptor ${_receptor.rfc === MlReceptor.defaultRfc ? 'default' : ''}" onclick="selectRfc('${_receptor.rfc}')">
+                <div class="_rfc">
+                    <p>${_receptor.nombre}</p>
+                    <p><b>${_receptor.rfc}</b></p>
+                </div>
+            </div>
+            <div class="_delete" onclick="deleteRfc({nombre:'${_receptor.nombre}', rfc: '${_receptor.rfc}', email: '${_receptor.email}'})">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="32px" height="32px"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </div>
+        </div>`
+    }).join('\n');
+}
+
+function setConfirmBill() {
+    const elNombre = document.getElementById('CONFIRM_BILL_RECEPTOR_NOMBRE');
+    const elRFC = document.getElementById('CONFIRM_BILL_RECEPTOR_RFC');
+    const elRegimen = document.getElementById('CONFIRM_BILL_RECEPTOR_REGIMEN');
+    const elConceptos = document.getElementById('CONFIRM_BILL_CONCEPTOS');
+    const elTotal = document.getElementById('CONFIRM_BILL_TOTAL');
+    const elLogo = document.getElementById('CONFIRM_LOGO_URL');
+    const elEmail = document.getElementById('CONFIRM_BILL_EMAIL');
+    const elDefault = document.getElementById('CONFIRM_BILL_DEFAULT');
+    const elUsoCfdi = document.getElementById('CONFIRM_USO_CFDI');
+    const elFormaPago = document.getElementById('CONFIRM_FORMA_PAGO');
+    // AUX
+    const pUsoWarning = document.getElementById('INPUT_USO_WARNING');
+    if (!appDictionary.receptor) {
+        return;
+    }
+    elEmail.value = appDictionary.receptor.email;
+    elDefault.value = appDictionary.receptor.isDefault;
+    elNombre.textContent = appDictionary.receptor.nombre;
+    elRFC.textContent = appDictionary.receptor.rfc;
+    elRegimen.textContent = appDictionary.receptor.regimen;
+    elLogo.style = `background-image:url('${logoUrl}')`
+    elConceptos.innerHTML = appDictionary.cfdi.conceptos.map((concepto) => {
+        return `
+        <div class="_conceptos">
+            <p class="_description">${concepto.descripcion}</p>
+            <p class="_cantidad"><b>x ${concepto.cantidad}</b></p>
+            <p>$ ${numberToCurrencyString(concepto.valorUnitario)}</p>
+        </div>
+        `
+    }).join('\n');
+    const { subtotal, iva, ieps } = appDictionary.cfdi.conceptos.reduce((p, c) => {
+        // Taxes
+        const taxes = c.impuestos;
+        const iva = taxes.find(t => t.type === 'iva');
+        const ieps = taxes.filter(t => t.type === 'ieps');
+        const iepsCuota = ieps.reduce((p, c) => p += (c.cuota || 0), 0);
+        const iepsTasa = ieps.reduce((p, c) => p += (c.tasa || 0), 0);
+
+        const itemSub = c.cantidad * c.valorUnitario;
+        const itemIeps = (iepsCuota * c.cantidad) + (itemSub * iepsTasa);
+        const itemIva = (itemSub + itemIeps) * iva.tasa;
+        p.subtotal += itemSub;
+        p.iva += itemIva;
+        p.ieps += itemIeps;
+        return p;
+    }, { subtotal: 0, iva: 0, ieps: 0 });
+    elTotal.innerHTML = `
+    <p class="_subtotal"><span><b>Subtotal: </b></span>$ ${numberToCurrencyString(subtotal)}</p>
+    <p class="_ieps ${ieps === 0 ? 'hidden' : ''}"><span><b>Ieps: </b></span>$ ${numberToCurrencyString(ieps)}</p>
+    <p class="_iva"><span><b>Iva: </b></span>$ ${numberToCurrencyString(iva)}</p>
+    <p class="_total"><span><b>Total: </b></span>$ ${numberToCurrencyString(iva + subtotal + ieps)}</p>
+    `
+    // usosCfdi
+    const notUsable = ['I06', 'I07', 'D04', 'D03', 'D08', 'D05', 'G02', 'D07', 'D10', 'D01', 'D09', 'D06', 'P01'];
+    const notUsableByMoral = ['D02']; // Only Persona Fisica can use these
+
+    const filteredUsosCfdi = usosCfdi.filter(c => {
+        if (notUsable.includes(c.clave)) {
+            return false
+        }
+        if(appDictionary.receptor.rfc.length === 12){
+            if (notUsableByMoral.includes(c.clave)) {
+                return false;
+            }
+        }
+        return true;
+    }).sort((a, b) => a.clave.localeCompare(b.clave))
+    const applicableRegimens = [601, 603, 606, 612, 620, 621, 622, 623, 624, 625, 626].map((s) => `${s}`);
+
+    if (!applicableRegimens.includes(appDictionary.receptor.regimen)) {
+        // Regimens that can't use G03
+        elUsoCfdi.innerHTML = filteredUsosCfdi.reduce((p, c) => p += `<option value="${c.clave}"${c.clave === 'S01' ? ' selected' : ''}>${c.clave} - ${c.descripcion}</option>`, '');
+        elUsoCfdi.setAttribute('disabled', true);
+        pUsoWarning.textContent = `El Régimen ${appDictionary.receptor.regimen} solo puede usar S01 en CFDI 4.0`;
+        pUsoWarning.classList.add('display');
+        appDictionary.cfdi.receptor.usoCFDI = 'S01';
+    } else {
+        elUsoCfdi.innerHTML = filteredUsosCfdi.reduce((p, c) => p += `<option value="${c.clave}"${c.clave === 'G03' ? ' selected' : ''}>${c.clave} - ${c.descripcion}</option>`, '');
+        elUsoCfdi.removeAttribute('disabled');
+        pUsoWarning.classList.remove('display');
+        appDictionary.cfdi.receptor.usoCFDI = 'G03';
+    }
+    
+    // formaPago
+    // appDictionary needs to be set before this executes
+    const formasPago = [
+        { clave: '28', descripcion: 'Tarjeta Débito' },
+        { clave: '04', descripcion: 'Tarjeta Crédito' },
+        { clave: '06', descripcion: 'Dinero Electrónico' },
+        { clave: '31', descripcion: 'Certificado de Regalo' },
+        { clave: '31', descripcion: 'Intermediarios de pago' },
+        { clave: '31', descripcion: 'Otros' },
+    ]
+    elFormaPago.innerHTML = formasPago.reduce((p, c) => p += `<option value="${c.clave}"${c.clave === appDictionary.cfdi.formaPago ? ' selected' : ''}>${c.descripcion}</option>`, '');
+}
+
+function setStampedCfdi() {
+    const elUUID = document.getElementById('STAMPED_UUID');
+    const elPDF = document.getElementById('STAMPED_DOWNLOAD_PDF');
+    const elXML = document.getElementById('STAMPED_DOWNLOAD_XML');
+    const _orderBinder = !!orderBinder ? orderBinder : appDictionary.binder;
+    elUUID.textContent = _orderBinder.billUUID;
+    elPDF.setAttribute('href', `https://ml-facturar.fiscalpop.com/api/download/pdf/${_orderBinder.customerId}/${_orderBinder.orderId}/${_orderBinder.profileId}/${_orderBinder.billUUID}`)
+    elXML.setAttribute('href', `https://ml-facturar.fiscalpop.com/api/download/xml/${_orderBinder.customerId}/${_orderBinder.orderId}/${_orderBinder.profileId}/${_orderBinder.billUUID}`)
+    // RESTAMP ARGS
+    if (restarmpArgs) {
+        const elRestamp = document.getElementById('RESTAMP_UUID');
+        elRestamp.innerHTML = `
+<div class="_canRestamp">
+    <p>Todavía puede reemplazar la factura por otro RFC o uso de CFDI</p>
+</div>
+<div class="actions">
+    <button class="primary warning" onclick="cancelBill()">
+        Cancelar factura
+    </button>
+    <button class="primary" onclick="replaceStamped()">
+        Reemplazar factura
+    </button>
+</div>`
+    }
+}
+
+(
+    function () {
+        // LOG ROCKET INIT
+        /*
+        // LogRocket.identify(`${MlOrder.id}`, {
+            sellerId: `${MlOrder.seller.id}`,
+            buyerId: `${MlOrder.buyer.id}`,
+        });
+        */
+        // --------------
+        const totalWithDiscounts = MlOrder.total_amount - (MlOrder.coupon?.amount || 0);
+
+        const elTitle = document.getElementById('BD_TITLE');
+        const elTotal = document.getElementById('BD_TOTAL');
+        const elPresentation = document.getElementById('BD_presentation');
+        const elRfcForm = document.getElementById('NRFC_FORM');
+
+        elRfcForm.addEventListener('keydown', listenToEnter);
+
+        elTitle.textContent = `Facturar pedido ${MlOrder.id}`;
+        elTotal.textContent = `$ ${numberToCurrencyString(totalWithDiscounts)}`;
+        elPresentation.textContent = `${MlOrder.buyer.first_name} ${MlOrder.buyer.last_name}`;
+        console.log('Machine: ', machine);
+        appState = machine.value;
+        if (MlOrder.status === 'cancelled') {
+            const elExp = document.getElementById('STAMPED_LEYEND_EXPIRED');
+            elExp.textContent = 'El pedido fue cancelado y no puede facturarse';
+            appState = machine.transition(appState, 'expired');
+            return;
+        }
+        if (!canStillBill) {
+            appState = machine.transition(appState, 'expired');
+            console.log('App State: ', appState);
+            return;
+        }
+        if (!!orderBinder) {
+            appState = machine.transition(appState, 'stamp');
+            console.log('App State: ', appState);
+            setStampedCfdi();
+            return;
+        }
+        if (!MlReceptor) {
+            appState = machine.transition(appState, 'new');
+            console.log('App State: ', appState);
+            return;
+        }
+        appState = machine.transition(appState, 'select');
+        setRfcOptions();
+        setConfirmBill();
+    }
+)()
+
+
+</script>
+</body>
