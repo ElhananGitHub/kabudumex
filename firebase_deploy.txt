@@ -40,10 +40,10 @@ Credentials saved to file: [C:\Users\Conde\AppData\Roaming\gcloud\application_de
 
 These credentials will be used by any library that requests Application Default Credentials (ADC).
 
-Quota project "marketertextil" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
+Quota project "kabudumex" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
 
 
-PS D:\xampp\htdocs\Nube\functions> gcloud config list
+PS D:\xampp\htdocs\Kabudumex\functions> gcloud config list
 [accessibility]
 screen_reader = True
 [compute]
@@ -52,6 +52,6 @@ zone = us-central1-a
 [core]
 account = jamiropuff@gmail.com
 disable_usage_reporting = False
-project = marketertextil
+project = marketKabudumexertextil
 
 Your active configuration is: [default]

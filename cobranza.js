@@ -505,7 +505,7 @@ const downloadEstadoCuenta = (cliente) => {
                 .onSnapshot((response) => {
                   let { DescargaEstadoCuenta } = response.data();
                   let configEndPoint = DescargaEstadoCuenta;
-                  configEndPoint.documentName = `Nube - Estado De Cuenta- ${formatoFechaNow()} - ${cliente}.pdf`;
+                  configEndPoint.documentName = `Kabudumex - Estado De Cuenta- ${formatoFechaNow()} - ${cliente}.pdf`;
 
                   const apiBody = {
                     multiples: {

@@ -16,7 +16,7 @@ const verifyAuth = () => {
             console.log(arrayUrl)
 
             const titleWeb = arrayUrl[4]?.slice(0, -5)
-            let title = "Nube : " + titleWeb
+            let title = "Kabudumex : " + titleWeb
 
             $(document).prop('title', title)
             $("#section-title").html(titleWeb)
