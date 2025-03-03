@@ -17,7 +17,7 @@ admin.initializeApp({
         "project_id": "umaguendavid",
         "storageBucket": "umaguendavid.appspot.com",
         "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC04kaWULqNoF6e\ng6ka+d7BnyxuyJtrBudl2VqncKSiPFDVXuIKKsfWU3n+7IowPegXXtpHvPZTB4bt\n8O+Sh56GggtuE4is9D1VakbqgeS7Pi7eUThcoTt+Sndl+di5K/0iAFq0X86mGgDw\n4tWV25hlgFguKN2c8lfAXG5Vu6jV95M0X1U8MasX/iUeZt+sLzXiyTDeMMj091EP\nbF927jZEEC/Wn/GBB8yHOfVjM09FtJ5PzmDXhXev4lCftvRN5yB4e6P9HsfES7Ft\nSLEaioPVAp9uWu+TVwdVIcE3XPr4540RBv74Iyny1RFDqH+vgfknQatYqYImNimd\n+K3NIOZbAgMBAAECggEALXf7umlMm7FGV55M8eUBo7Y5Wxe+SacQn7+FVDWyjL2Q\nrDIPq/KZDT0qm3QmQH4vS0CiqgnL+Y8Y0dMQxcqlhLZH3UG3x5IVoNT4QpaoQpEd\nAvFzs4UsCVD6tn2ZhuKR3Owt4M18irBasDK08dijdFBQ2jmXi443lLknWxGzHSWT\nrZLI+yoDAZJxf4cKzka++aRmyz8xUu7+HMsJtjgUNkG+ytmzKOQeqfZ0Q5tkWzmO\nfF7iWhIM7P9Tz0A5uZfPut07jJyjYN9OWcFCr7jenAAhIN6bUCislK4i72u4/5uq\n3MIll/TIEOwqg0G+31Xw7oEkKZHcrzPwBdiCY843EQKBgQDzhvhC713ywbkBUjkA\nDI3q/mhjXc6t8eeONj9CbCbq+h8d52vc9VsOFBkHkSgkC+pYLaUdfCmk090j5FZl\n4pS4/ddMXWhkI/sJ3rMWaFVY5KQaaAnjh0G8lhqNrxW416lR5+IXuWdfr9PY8Lv/\nIgaEhMdyZi1fE9GgjSOB+xbt9wKBgQC+JfOyU/2sqFvngRVQ0yqcx6uqewmtFSUQ\ntIwFjsaCqrkkYt9zg8LBRtLC1j6i/uVxFgzQeRhlsVgsyP1GIbPJPnUgXgn+GQwj\nBLkHHc+gZ7PApnjjSlXNElcsm8kxuvtfTJ76K7ULqDnyzv0A1MP1m1P8DUZdq7pr\nY27it5TBvQKBgEPuDUhWjuVNZnbY4a+C0P+Q8btuCl35EXdY6HJ1yrFXDeEAkdTz\n1+9oacbzlbfgXwEz0lAUN2WT96awZe1Ls+KaZDkYASuV4cvSBDCm78+5D5GSHdgK\n/apGUKffA/coqUGApk+p1w0Y9cYY+MflTN4gT6Y4nEVeOOZJGHOEf9PnAoGAP6Ib\nx9Xr0tgUyYidRYsle4omnMrIFjA5UznYkhORwzC2/MJJ3TJ+/odhCOsB0zJSPmIO\nr8WWsJGE3Jf2in3E2NgaAlb2KR7gvOdbtFH5pciOky4izo2V4Sb+HWOVFRtp/B58\nJWRzFg+aNPOoH5sUaSEuHe+jWL2biUyhUyX0llECgYEAoJ9B5BnDbiXqxVbF7bZ9\nl2Fgv3LkichA4pFqaKsskYHEEmCYWhv/0WZrdelM/EhbY7TFioki8NIHtFwxlETc\nCj/U7fBYmIjAckH2ULT4JD/y0JG2MtW8W8ehY/l0WQe7QOUB3t83wybLs4Rm6vsz\njTtPoT+l3HMwyhNe2xWRgJU=\n-----END PRIVATE KEY-----\n",
-        "client_email": "firebase-adminsdk-kziw4@marketertextil.iam.gserviceaccount.com",
+        "client_email": "firebase-adminsdk-kziw4@kabudumex.iam.gserviceaccount.com",
         "firebaseApiKey": "AIzaSyDmWoPDy76ODJCu47mtB4lnPPLxy8QMjNo"
     }
     ),
@@ -27,9 +27,9 @@ admin.initializeApp({
 /*
 admin.initializeApp({
     apiKey: "AIzaSyDmWoPDy76ODJCu47mtB4lnPPLxy8QMjNo",
-    authDomain: "marketertextil.firebaseapp.com",
-    projectId: "marketertextil",
-    storageBucket: "marketertextil.appspot.com",
+    authDomain: "kabudumex.firebaseapp.com",
+    projectId: "kabudumex",
+    storageBucket: "kabudumex.appspot.com",
     messagingSenderId: "945690027765",
     appId: "1:945690027765:web:201e36ea874b619d16c7bc",
     measurementId: "G-QZ9TBM32PN",
@@ -93,18 +93,18 @@ var datosPDF = {
         "subject": "Nueva Nota de Venta",
         "emailTemplateId": "1eofbRHc790xmEvtf4cyrr0hSRqu803zd3mWqrg-nitw",
         "envioMail": true,
-        "sender": "cobranzatextil22@gmail.com",
+        "sender": "cobranzakabudumex22@gmail.com",
         "templateID": "1sxte6nBaaiqH0IKMsH3yXOffzFUr3sllHrX8V6gFjCY",
         "documentName": "Nota de Venta 104 - ML-2000006472773110.pdf"
     },
     "uploadToFirebaseStorage": {
         "folderName": "archivosPDF",
-        "projectId": "marketertextil",
-        "bucketName": "marketertextil.appspot.com",
+        "projectId": "kabudumex",
+        "bucketName": "kabudumex.appspot.com",
         "fileName": "Nota de Venta - 96.pdf"
     },
     "updateFirebaseDocument": {
-        "projectId": "marketertextil",
+        "projectId": "kabudumex",
         "collection": "Ventas",
         "firestorageUrl": true,
         "field": "urlNota",

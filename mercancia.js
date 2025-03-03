@@ -817,7 +817,7 @@ const editarRegistro = async () => {
 
   //Enviar mail de notificación
   var recipient = "ikamaji@gmail.com";
-  var sender = "cobranzatextil22@gmail.com";
+  var sender = "cobranzakabudumex22@gmail.com";
   var subject = "Mercancia Editada";
   var body = `Se ha editado la mercancia:
 

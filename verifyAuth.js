@@ -22,7 +22,7 @@ const verifyAuth = () => {
             $("#section-title").html(titleWeb)
 
             // Si estamos en el Dashboard, cargamos el siguiente código
-            if(URLactual == "http://localhost/firebase/marketertextil/dashboard.html"){
+            if(URLactual == "http://localhost/firebase/kabudumex/dashboard.html"){
 
             }
 
@@ -36,7 +36,7 @@ const verifyAuth = () => {
             
             //console.log(URLactual)
             // Si no ha iniciado sesión el usuario, lo mandamos al Login
-            //if(URLactual != "http://localhost/firebase/marketertextil/"){
+            //if(URLactual != "http://localhost/firebase/kabudumex/"){
                 
             
             

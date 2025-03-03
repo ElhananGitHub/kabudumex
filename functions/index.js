@@ -144,9 +144,9 @@ exports.mercadolibrewebhook = functions.https.onRequest((request, response) => {
 
 
     //Redirect the request to other url in case it have a specific user_id
-    if (request.body.user_id == 1524730915) {
+    if (request.body.user_id == 2181741834) {
       console.log("Redirecting request to bazaru")
-      var urlToRedirect = "https://us-central1-bazaru.cloudfunctions.net/mercadolibrewebhook";
+      var urlToRedirect = "https://us-central1-kabudumex.cloudfunctions.net/mercadolibrewebhook";
       var responseRedirect = await fetch(urlToRedirect, {
         method: 'POST',
         body: JSON.stringify(request.body),
@@ -157,7 +157,7 @@ exports.mercadolibrewebhook = functions.https.onRequest((request, response) => {
       return response.json({ ok: 1, result: resultRedirect });
 
     }
-
+/*
     if (request.body.user_id == 201985398) {
       console.log("Redirecting request to lailaconfort")
       var urlToRedirect = "https://us-central1-lailaconfort.cloudfunctions.net/mercadolibrewebhook";
@@ -199,7 +199,7 @@ exports.mercadolibrewebhook = functions.https.onRequest((request, response) => {
       return response.json({ ok: 1, result: resultRedirect });
 
     }
-
+*/
 
     if (request.body.user_id !== 642273229) {
       return response.json({ ok: 1 });
@@ -408,13 +408,13 @@ exports.cerrarVentas = functions.https.onRequest((request, response) => {
     // Firebase Storage
     uploadToFirebaseStorage = {};
     uploadToFirebaseStorage.folderName = "archivosPDF";
-    uploadToFirebaseStorage.projectId = "grupomayoreomexico";
-    uploadToFirebaseStorage.bucketName = "grupomayoreomexico.appspot.com";
+    uploadToFirebaseStorage.projectId = "kabudumex";
+    uploadToFirebaseStorage.bucketName = "kabudumex.appspot.com";
     uploadToFirebaseStorage.fileName = `Nota de Venta ` + numero_orden_venta + " - " + cliente + ".pdf";
 
     // Firebase Document
     updateFirebaseDocument = {};
-    updateFirebaseDocument.projectId = "grupomayoreomexico";
+    updateFirebaseDocument.projectId = "kabudumex";
     updateFirebaseDocument.collection = "Ventas";
     updateFirebaseDocument.firestorageUrl = true;
     updateFirebaseDocument.field = "urlNota";
@@ -428,7 +428,7 @@ exports.cerrarVentas = functions.https.onRequest((request, response) => {
       updateFirebaseDocument: updateFirebaseDocument,
       camposHeader: camposHeader,
       "numero_orden_venta": numero_orden_venta,
-      "urlImagen": "https://grupomayoreomexico.web.app/public/images/logo.png",
+      "urlImagen": "https://kabudumex.web.app/public/images/logo.png",
 
       "No. de Nota": numero_orden_venta,
       "Fecha de Venta": formatoFecha(fechaVenta),
@@ -596,7 +596,7 @@ exports.cerrarVentas = functions.https.onRequest((request, response) => {
       logger("Venta", "Cierre de pedido Exitoso", numero_orden_venta, null, user);
 
 
-      fetch("https://us-central1-grupomayoreomexico.cloudfunctions.net/summarizeInventory")
+      fetch("https://us-central1-kabudumex.cloudfunctions.net/summarizeInventory")
 
 
       if (arrOrdenesML.length > 0) {

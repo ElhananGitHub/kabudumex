@@ -56,7 +56,7 @@ function generarPdfEtiquetas(barcode, response) {
         var page = [
           {
             text: [
-              { text: `MARKETER TEXTIL SA DE CV\n`, alignment: 'left', fontSize: 9, bold: true },
+              { text: `KABUDUMEX SA DE CV\n`, alignment: 'left', fontSize: 9, bold: true },
               { text: `RFC MTE190409SC7\n`, alignment: 'left', fontSize: 5, bold: true },
               { text: `GENERAL PABLO GONZALEZ 46 COL. FRANCISCO VILLA ALCALDIA IZTAPALAPA CIUDAD DE MEXICO C.P. 09720 TEL. 5544150765`, alignment: 'left', fontSize: 6 },
             ],
