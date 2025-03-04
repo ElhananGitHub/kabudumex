@@ -1177,10 +1177,12 @@ async function arreglarCostoUnitarioML() {
 
 
   //Function to execute mercadolibreFunctions
-  exports.executeMercadolibreFunctions = functions.runWith({
-    timeoutSeconds: 540,
-    memory: "1GB",
-  }).https.onRequest(async (request, response) => {
+  exports.executeMercadolibreFunctions = functions
+  // exports.executeMercadolibreFunctions = functions.runWith({
+  //   timeoutSeconds: 540,
+  //   memory: "1GB",
+  //})
+    .https.onRequest(async (request, response) => {
     cors(request, response, async () => {
 
       //Allow CORS
@@ -1222,10 +1224,12 @@ async function arreglarCostoUnitarioML() {
   });
 
   //Function to execute funcionesGenerales
-  exports.executeFuncionesGenerales = functions.runWith({
-    timeoutSeconds: 540,
-    memory: "512MB",
-  }).https.onRequest(async (request, response) => {
+  exports.executeFuncionesGenerales = functions
+  // .runWith({
+  //   timeoutSeconds: 540,
+  //   memory: "512MB",
+  // })
+  .https.onRequest(async (request, response) => {
     cors(request, response, async () => {
 
       //Allow CORS
